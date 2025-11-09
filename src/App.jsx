@@ -4,6 +4,7 @@ import Banner from "./BannerSection/Banner";
 import FoodCard from './FootCard/FoodCard'
 import HowWork from "./Component/HowWork/HowWork";
 import OurMission from "./Component/OurMission/OurMission";
+import Regiestration from "./Component/Regiestration/Regiestration";
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
     <FoodCard></FoodCard>
     <HowWork></HowWork>
     <OurMission></OurMission>
+    <Regiestration></Regiestration>
     </>
    
   );
