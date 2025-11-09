@@ -1,6 +1,7 @@
 import React from "react";
 import Navbars from "./NavBar/Navbars";
 import Banner from "./BannerSection/Banner";
+import FoodCard from './FootCard/FoodCard'
 
 
 export default function App() {
@@ -10,6 +11,7 @@ export default function App() {
       <Navbars></Navbars>
     </div>
     <Banner></Banner>
+    <FoodCard></FoodCard>
     </>
    
   );
