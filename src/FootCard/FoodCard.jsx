@@ -8,7 +8,7 @@ const Card = () => {
                 <div className="bg" />
                 <div className="blob" />
 
-                <div className="content">
+                <div className="content w-10/12">
                     <img
                         src="https://placehold.co/150x100/ffa500/fff?text=Food+Image"
                         alt="Food item"
