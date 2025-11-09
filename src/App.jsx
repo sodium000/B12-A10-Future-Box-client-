@@ -5,6 +5,7 @@ import FoodCard from './FootCard/FoodCard'
 import HowWork from "./Component/HowWork/HowWork";
 import OurMission from "./Component/OurMission/OurMission";
 import Regiestration from "./Component/Regiestration/Regiestration";
+import Login from "./Component/Login/Login";
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
     <HowWork></HowWork>
     <OurMission></OurMission>
     <Regiestration></Regiestration>
+    <Login></Login>
     </>
    
   );
