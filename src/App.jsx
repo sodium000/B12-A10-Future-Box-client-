@@ -3,6 +3,7 @@ import Navbars from "./NavBar/Navbars";
 import Banner from "./BannerSection/Banner";
 import FoodCard from './FootCard/FoodCard'
 import HowWork from "./Component/HowWork/HowWork";
+import OurMission from "./Component/OurMission/OurMission";
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
     <Banner></Banner>
     <FoodCard></FoodCard>
     <HowWork></HowWork>
+    <OurMission></OurMission>
     </>
    
   );
