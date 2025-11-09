@@ -2,6 +2,7 @@ import React from "react";
 import Navbars from "./NavBar/Navbars";
 import Banner from "./BannerSection/Banner";
 import FoodCard from './FootCard/FoodCard'
+import HowWork from "./Component/HowWork/HowWork";
 
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
     </div>
     <Banner></Banner>
     <FoodCard></FoodCard>
+    <HowWork></HowWork>
     </>
    
   );
