@@ -29,7 +29,7 @@ const FoodDonationForm = () => {
 
     return (
         <div className='bg-[url(/coolbackgrounds-fractalize-cool_backgrounds.png)] bg-cover bg-center bg-no-repeat'>
-            <div className='max-w-4xl mx-auto p-6 not-first:shadow-xl rounded-xl bg-[url(/Polygon Luminary.svg)]'>
+            <div className='max-w-4xl mx-auto p-6 not-first:shadow-xl rounded-xl'>
                 <h1 className="text-3xl font-extrabold text-green-700 mb-6 border-b pb-3">
                     Food Added
                 </h1>

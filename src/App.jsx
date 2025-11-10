@@ -7,6 +7,8 @@ import OurMission from "./Component/OurMission/OurMission";
 import Regiestration from "./Component/Regiestration/Regiestration";
 import Login from "./Component/Login/Login";
 import AddFood from './Component/AddFood/AddFood'
+import FoodRequest from "./Component/FoodRequest/FoodRequest";
+import FoodDetails from "./Component/FoodDetails/FoodDetails";
 
 
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
     <Regiestration></Regiestration>
     <Login></Login>
     <AddFood></AddFood>
+    <FoodRequest></FoodRequest>
+    <FoodDetails></FoodDetails>
     </>
    
   );
