@@ -3,7 +3,7 @@ import React, { use, useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-// import { Link } from "react-router";
+import { Link } from "react-router";
 
 
 const Login = () => {
@@ -36,7 +36,7 @@ const Login = () => {
     //     };
     return (
         <div>
-            <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-gray-900 via-purple-900 to-indigo-900 p-4">
+            <div className="min-h-[92vh] flex items-center justify-center bg-linear-to-br from-gray-900 via-purple-900 to-indigo-900 p-4">
                 <motion.div
                     initial={{ opacity: 0, rotateY: -15 }}
                     animate={{ opacity: 1, rotateY: 0 }}
@@ -158,9 +158,9 @@ const Login = () => {
                         className="text-center text-sm text-gray-300 mt-6"
                     >
                         Don’t have an account?{" "}
-                        <a to="/regiestration" className="text-pink-400 hover:underline">
+                        <Link to="/auth/regiestration" className="text-pink-400 hover:underline">
                             Register now
-                        </a>
+                        </Link>
                     </motion.p>
                 </motion.div>
             </div>

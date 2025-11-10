@@ -3,6 +3,7 @@ import React, { use, useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
+import { Link } from "react-router";
 
 
 
@@ -248,9 +249,9 @@ const Regiestration = () => {
             className="text-center text-sm text-gray-200 mt-6"
           >
             Already have an account?{" "}
-            <a href="/login" className="text-pink-300 hover:underline">
+            <Link  to="/auth/login" className="text-pink-300 hover:underline">
               Login here
-            </a>
+            </Link>
           </motion.p>
         </motion.div>
       </div>
