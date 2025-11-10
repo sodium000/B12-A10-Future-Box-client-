@@ -42,7 +42,7 @@ const HowWork = () => {
 
         <div className="relative flex flex-col md:flex-row items-center justify-between gap-16 md:gap-8">
           {steps.map((step, i) => (
-            <di v
+            <div
               key={i}
               className="relative bg-white shadow-lg rounded-2xl p-6 w-full md:w-1/4 flex flex-col items-center text-center z-10 hover:shadow-xl transition"
             >
@@ -51,7 +51,7 @@ const HowWork = () => {
               </div>
               <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
               <p className="text-gray-500 text-sm">{step.desc}</p>
-            </di>
+            </div>
           ))}
 
           <div className="hidden md:block absolute top-1/2 left-0 w-full h-48 pointer-events-none z-0">

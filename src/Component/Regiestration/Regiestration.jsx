@@ -3,12 +3,13 @@ import React, { use, useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-import { Link } from "react-router";
+import { Link, useNavigate} from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
 
 
 
 const Regiestration = () => {
+  let navigate = useNavigate()
   const [toggle, settoggle] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
@@ -24,30 +25,11 @@ const Regiestration = () => {
   };
 
     const googleLogin = () => {
-      console.log('tonmoy')
       SignByGoogle()
         .then((result) => {
           console.log(result.user)
-          const newUser = {
-            name: result.user.displayName,
-            email: result.user.email,
-            photo: result.user.photoURL
-          }
-
-
-          // fetch('http://localhost:3000/users', {
-          //   method : 'POST',
-          //   headers :{
-          //     'content-type' : 'application/json'
-          //   },
-          //   body : JSON.stringify(newUser)
-          // })
-          // .then(res => res.json())
-          // .then(data =>{
-          //   console.log("repson come from", data)
-          // })
-
-
+          navigate('/')
+          
         }).catch((error) => {
           console.log(error);
           // ...

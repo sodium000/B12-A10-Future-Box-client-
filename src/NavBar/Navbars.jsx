@@ -1,9 +1,22 @@
 import React from 'react';
 import Button from '../Button/LoginButton';
 import ThemeToggle from '../ThemToggle/ThemToggle';
-import LogoImage from '/download.png'
+import { use } from 'react';
+import AuthContext from '../AuthContext/AuthContext';
+import { Link } from 'react-router';
 
 const Navbars = () => {
+    const { user, loading,SignOut } = use(AuthContext)
+    const link = <>
+        {
+            user ? <>
+                <Link to='/addfood' >Add Food</Link>
+                <Link to='/managemyfood' >Manage My Food</Link>
+                <Link to='/myfoodrequest' >My Food Requests</Link>
+                <Link onClick={()=>SignOut()}>Logout</Link>
+            </> : ""
+        }
+    </>
     return (
         <div className="navbar bg-base-100 shadow-sm px-30">
             <div className="navbar-start">
@@ -13,13 +26,12 @@ const Navbars = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><a >Home</a></li>
-                        <li><a>Available Foodes</a></li>
-                        <li><a>Add Food</a></li>
-                        <li><a>Manage My Food</a></li>
-                        <li><a>My Food Requests</a></li>
-                        <li><a>Logout</a></li>
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow ">
+                        <li><Link to={'/'}>Home</Link></li>
+                        <li><Link >Available Foodes</Link></li>
+                        {
+                            link
+                        }
                     </ul>
                 </div>
                 <div className='flex  items-center'>
@@ -28,30 +40,38 @@ const Navbars = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a >Home</a></li>
-                    <li><a>Available Foodes</a></li>
+                    <li><Link to={'/'} >Home</Link></li>
+                    <li><Link>Available Foodes</Link></li>
                 </ul>
             </div>
             <div className=" navbar-end  gap-5">
                 <ThemeToggle></ThemeToggle>
-                <Button></Button>
-                <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
-                    <ul
-                        tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><a>Add Food</a></li>
-                        <li><a>Manage My Food</a></li>
-                        <li><a>My Food Requests</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
+                {loading ? (
+                    <span className="loading loading-spinner loading-md"></span>
+                ) : (
+                    <>
+                        <Button></Button>
+                        {
+                            user ? <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img
+                                            alt="Tailwind CSS Navbar component"
+                                            src={user.photoURL}
+                                        />
+                                    </div>
+                                </div>
+                                <ul
+                                    tabIndex="-1"
+                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                    {
+                                        link
+                                    }
+                                </ul>
+                            </div> : ""
+                        }
+                    </>
+                )}
             </div>
         </div>
     );

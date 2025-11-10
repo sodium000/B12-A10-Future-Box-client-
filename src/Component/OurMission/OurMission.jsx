@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const OurMission = () => {
     return (
@@ -10,7 +12,7 @@ const OurMission = () => {
                     relative overflow-hidden
                     flex flex-col md:flex-row items-center justify-center"
                 >
-                    <div
+                    <motion.div
                         className="md:w-1/2 p-4 md:p-8 lg:p-12 text-center md:text-left"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -36,9 +38,9 @@ const OurMission = () => {
                         >
                             Search
                         </button>
-                    </div>
+                    </motion.div>
 
-                    <div
+                    <motion.div
                         className="md:w-1/2 mt-8 md:mt-0 flex justify-center items-center"
                         initial={{ opacity: 0, x: 100 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -50,7 +52,7 @@ const OurMission = () => {
                             alt="Golden hay bales in a sunny field."
                             className="w-full h-auto object-cover max-h-[600px] md:max-h-full"
                         />
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>
