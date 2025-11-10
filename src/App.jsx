@@ -6,6 +6,7 @@ import HowWork from "./Component/HowWork/HowWork";
 import OurMission from "./Component/OurMission/OurMission";
 import Regiestration from "./Component/Regiestration/Regiestration";
 import Login from "./Component/Login/Login";
+import AddFood from './Component/AddFood/AddFood'
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
     <OurMission></OurMission>
     <Regiestration></Regiestration>
     <Login></Login>
+    <AddFood></AddFood>
     </>
    
   );
