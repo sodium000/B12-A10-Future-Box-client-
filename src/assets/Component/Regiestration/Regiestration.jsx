@@ -17,15 +17,14 @@ const Regiestration = () => {
     Photo_Url: "",
   });
 
-    const { SignByGoogle } = use(AuthContext);
+    const { singInwithGoogle } = use(AuthContext);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
     const googleLogin = () => {
-      console.log('tonmoy')
-      SignByGoogle()
+      singInwithGoogle()
         .then((result) => {
           console.log(result.user)
           const newUser = {

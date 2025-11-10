@@ -1,0 +1,19 @@
+/* Custom CSS for a dashed line and simple moving arrow */
+.animated-connector::after {
+  content: '▶'; /* Unicode character for a simple arrow */
+  position: absolute;
+  right: -10px; /* Position the arrow */
+  top: -8px;
+  color: #4f46e5; /* indigo-600 */
+  animation: moveArrow 2s infinite linear;
+}
+
+/* Keyframes for simple arrow movement along the line */
+@keyframes moveArrow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(30px); /* Adjust based on line length */
+  }
+}

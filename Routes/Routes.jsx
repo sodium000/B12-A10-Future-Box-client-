@@ -6,8 +6,7 @@ import AuthLayout from "../Layout/AuthLayout";
 import Login from '../src/Component/Login/Login'
 import Regiestration from '../src/Component/Regiestration/Regiestration'
 import AddFood from '../src/Component/AddFood/AddFood'
-import FoodLayout from "../Layout/FoodLayout";
-import FoodRequest from '../src/Component/FoodRequest/FoodRequest'
+
 
  const router = createBrowserRouter([
   {
