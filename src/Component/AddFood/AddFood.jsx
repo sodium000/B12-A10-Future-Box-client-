@@ -2,10 +2,13 @@ import React from 'react';
 // Assuming you have a component library for icons like react-icons
 import { FiPackage, FiMapPin, FiCalendar, FiUser, FiMail, FiCamera, FiTag } from 'react-icons/fi';
 import Navbars from '../../NavBar/Navbars';
+import { use } from 'react';
+import AuthContext from '../../AuthContext/AuthContext';
 
 const FoodDonationForm = () => {
+    const {user} = use(AuthContext)
 
-    const InputField = ({ label, type = 'text', name, icon: Icon, placeholder, required = false, className = '' }) => (
+    const InputField = ({ label, type = 'text', name, icon: Icon, placeholder, required = false, className = '', readOnly= false ,User}) => (
         <div className={`mb-4 ${className}`}>
             <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
                 {label} {required && <span className="text-red-500">*</span>}
@@ -22,6 +25,8 @@ const FoodDonationForm = () => {
                     name={name}
                     placeholder={placeholder}
                     required={required}
+                    readOnly ={readOnly}
+                    value={User}
                     className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm p-3 ${Icon ? 'pl-10' : ''}`}
                 />
             </div>
@@ -112,14 +117,16 @@ const FoodDonationForm = () => {
                             label="Donor's Name"
                             name="donorName"
                             icon={FiUser}
-                            required
+                            readOnly
+                            User = {user.displayName}
                             />
                         <InputField
                             label="Donor's Email"
                             name="donorEmail"
                             type="email"
                             icon={FiMail}
-                            required
+                            readOnly
+                            User = {user.email}
                             />
                         <div className="mb-4">
                             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -141,7 +148,7 @@ const FoodDonationForm = () => {
                             </label>
                             <div className="mt-1 flex items-center">
                                 <img
-                                    src="https://placehold.co/40x40/87ceeb/fff?text=D"
+                                    src={user.photoURL}
                                     alt="Donor"
                                     className="w-9 h-9 rounded-3xl object-cover"
                                     />

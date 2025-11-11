@@ -3,8 +3,9 @@ import React, { use, useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-import { Link, useNavigate} from "react-router";
+import { Link, useNavigate } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
+import { updateProfile } from "firebase/auth";
 
 
 
@@ -18,23 +19,23 @@ const Regiestration = () => {
     Photo_Url: "",
   });
 
-    const { SignByGoogle } = use(AuthContext);
+  const { SignByGoogle, SignWithEmail } = use(AuthContext);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-    const googleLogin = () => {
-      SignByGoogle()
-        .then((result) => {
-          console.log(result.user)
-          navigate('/')
-          
-        }).catch((error) => {
-          console.log(error);
-          // ...
-        });
-    };
+  const googleLogin = () => {
+    SignByGoogle()
+      .then((result) => {
+        console.log(result.user)
+        navigate('/')
+
+      }).catch((error) => {
+        console.log(error);
+        // ...
+      });
+  };
 
 
 
@@ -53,22 +54,44 @@ const Regiestration = () => {
     if (!password || password.length < 8) {
       newErrors.password = "Password must be at least 8 characters.";
       setErrors(newErrors)
-      return 
+      return
     }
     if (!/[a-z]/.test(password)) {
       newErrors.password = "Use at least one lowercase letter.";
       setErrors(newErrors)
-      return 
+      return
     }
     if (!/[A-Z]/.test(password)) {
       newErrors.password = "Use at least one uppercase letter.";
       setErrors(newErrors)
-      return 
+      return
     }
     if (!/[0-9]/.test(password)) {
       newErrors.password = "Use at least one digit.";
       setErrors(newErrors)
-      return 
+      return
+    }
+    else {
+      console.log('tonmoy')
+      const Email = formData.email
+      const Password = formData.password
+      const Name = formData.name
+      const PhotoURL = formData.Photo_Url
+      SignWithEmail(Email, Password).then((userCredential) => {
+        const user = userCredential.user;
+        updateProfile(user, {
+          displayName: Name, photoURL: PhotoURL
+        }).then(() => {
+        }).catch((error) => {
+          console.log(error)
+        });
+        console.log(user)
+        navigate('/');
+
+      })
+        .catch((error) => {
+          console.log(error)
+        });
     }
   };
   return (
@@ -106,6 +129,7 @@ const Regiestration = () => {
                 placeholder="John Doe"
                 className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 transition duration-300"
                 required
+                
               />
             </motion.div>
             <motion.div
@@ -137,7 +161,7 @@ const Regiestration = () => {
                 Password
               </label>
               <input
-               type={toggle ? "text" : "password"}
+                type={toggle ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
@@ -186,7 +210,7 @@ const Regiestration = () => {
             </motion.button>
 
             <motion.button
-              onClick={()=>googleLogin()}
+              onClick={() => googleLogin()}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -231,7 +255,7 @@ const Regiestration = () => {
             className="text-center text-sm text-gray-200 mt-6"
           >
             Already have an account?{" "}
-            <Link  to="/auth/login" className="text-pink-300 hover:underline">
+            <Link to="/auth/login" className="text-pink-300 hover:underline">
               Login here
             </Link>
           </motion.p>

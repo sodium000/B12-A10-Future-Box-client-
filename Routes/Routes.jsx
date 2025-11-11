@@ -42,11 +42,11 @@ import MyFoodReq from '../src/MyFoodRequest/MyFoodReq'
   },
   {
     path: "/managemyfood",
-    Component: ManageMyFood,
+    element:  <PrivateRoutes><ManageMyFood></ManageMyFood></PrivateRoutes> ,
   },
   {
     path: "/myfoodrequest",
-    Component:MyFoodReq,
+    element:  <PrivateRoutes><MyFoodReq></MyFoodReq></PrivateRoutes> ,
   },
 ]);
 

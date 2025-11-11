@@ -3,17 +3,19 @@ import React, { use, useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import AuthContext from "../../AuthContext/AuthContext";
 
 
 const Login = () => {
+    let navigate = useNavigate()
     const [toggle, settoggle] = useState(false)
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
 
-    // const { singInwithGoogle } = use(AuthContext);
+    const { LogInwithemail,SignByGoogle } = use(AuthContext);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,19 +23,30 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Login Data:", formData);
+        const Email = formData.email
+        const Password = formData.password
+        LogInwithemail(Email, Password).then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user)
+            navigate('/');
+        })
+            .catch((error) => {
+                console.log(error)
+            });
+
     };
 
-    //     const googleLogin = () => {
-    //         singInwithGoogle()
-    //         .then((result) => {
-    //     console.log(result.user)
+     const googleLogin = () => {
+    SignByGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate('/');
 
-    //   }).catch((error) => {
-    //     console.log(error);
-    //     // ...
-    //   });
-    //     };
+      }).catch((error) => {
+        console.log(error);
+        // ...
+      });
+  };
     return (
         <div>
             <div className="min-h-[92vh] flex items-center justify-center bg-linear-to-br from-gray-900 via-purple-900 to-indigo-900 p-4">
@@ -107,7 +120,7 @@ const Login = () => {
                     </motion.form>
                     <motion.button
                         type="submit"
-                        // onClick={googleLogin}
+                        onClick={googleLogin}
                         initial={{ opacity: 0, x: 40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{
