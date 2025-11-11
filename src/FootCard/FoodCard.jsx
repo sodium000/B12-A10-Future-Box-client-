@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 const FoodCard = ({ data }) => {
-  const { FoodImag, Food_name, Food_serve, Location, Date, Donor_img, Donor_name } = data;
+  const { FoodImag, Food_name, Food_serve, Location, Date, Donor_img, Donor_name,_id } = data;
 
   return (
     <div className="relative w-75 h-110 flex items-center justify-center">
@@ -32,10 +33,11 @@ const FoodCard = ({ data }) => {
           <p><strong>Pickup:</strong> {Location}</p>
           <p><strong>Expires:</strong> {Date}</p>
         </div>
-
+        <Link to={`/food/${_id}`}>
         <button className="w-full bg-white/80 backdrop-blur-md border-2 border-blue-300 text-slate-800 font-semibold py-2 rounded-md hover:bg-cyan-100 hover:scale-105 active:scale-95 transition-all duration-300">
           View Details
         </button>
+        </Link>
       </div>
     </div>
   );
