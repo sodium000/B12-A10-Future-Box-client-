@@ -8,6 +8,37 @@ import AuthContext from '../../AuthContext/AuthContext';
 const FoodDonationForm = () => {
     const {user} = use(AuthContext)
 
+
+    const foodAdd = (event)=>{
+        event.preventDefault()
+        const newFood = {
+            Donor_name : user.displayName,
+            Email:user.email,
+            Donor_img : user.photoURL,
+            Status : "Available",
+            Food_name : event.target.foodName.value,
+            Food_serve : event.target.foodQuantity.value,
+            Location : event.target.pickupLocation.value,
+            Date : event.target.expireDate.value,
+            Description : event.target.additionalNote.value,
+            FoodImag : event.target.Photo_URL.value
+        }
+        fetch('http://localhost:3000/allfood',{
+            method : 'POST',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(newFood)
+        })
+          .then(res => res.json())
+            .then(data => {
+                console.log("after data post", data);
+                    alert("New user created")
+                    event.target.reset()
+                
+            })
+    }
+
     const InputField = ({ label, type = 'text', name, icon: Icon, placeholder, required = false, className = '', readOnly= false ,User}) => (
         <div className={`mb-4 ${className}`}>
             <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
@@ -36,8 +67,9 @@ const FoodDonationForm = () => {
     return (
         <>
         <Navbars></Navbars>
+        
         <div className='bg-[url(/coolbackgrounds-fractalize-cool_backgrounds.png)] bg-cover bg-center bg-no-repeat'>
-            <div className='max-w-4xl mx-auto p-6 not-first:shadow-xl rounded-xl'>
+            <form onSubmit={foodAdd} className='max-w-4xl mx-auto p-6 not-first:shadow-xl rounded-xl'>
                 <h1 className="text-3xl font-extrabold text-green-700 mb-6 border-b pb-3">
                     Food Added
                 </h1>
@@ -133,7 +165,6 @@ const FoodDonationForm = () => {
                                 Current Status (Internal)
                             </label>
                             <p
-                                name=""
                                 className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800`}>
                                 <FiTag className="h-4 w-4 mr-1" />
                                 Available
@@ -165,7 +196,7 @@ const FoodDonationForm = () => {
                         Confirm
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </>
     );

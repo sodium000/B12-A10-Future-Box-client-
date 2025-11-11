@@ -9,6 +9,7 @@ import AddFood from '../src/Component/AddFood/AddFood'
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import ManageMyFood from '../src/Component/ManageMyFood/ManageMyFood'
 import MyFoodReq from '../src/MyFoodRequest/MyFoodReq'
+import AllFoodShow from "../src/Component/AllFoodShow/AllFoodShow";
 
 
  const router = createBrowserRouter([
@@ -18,6 +19,7 @@ import MyFoodReq from '../src/MyFoodRequest/MyFoodReq'
     children : [
         {
             index : true,
+            loader: ()=> fetch(`http://localhost:3000/food`),
             Component : HomePage
         }
     ]
@@ -48,6 +50,11 @@ import MyFoodReq from '../src/MyFoodRequest/MyFoodReq'
     path: "/myfoodrequest",
     element:  <PrivateRoutes><MyFoodReq></MyFoodReq></PrivateRoutes> ,
   },
+  {
+    path: "/allfood",
+    loader: ()=> fetch(`http://localhost:3000/food`),
+    element: <AllFoodShow></AllFoodShow> ,
+  }
 ]);
 
  export default router
