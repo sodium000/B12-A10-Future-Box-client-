@@ -19,7 +19,7 @@ import AllFoodShow from "../src/Component/AllFoodShow/AllFoodShow";
     children : [
         {
             index : true,
-            loader: ()=> fetch(`http://localhost:3000/food`),
+            loader: ()=> fetch(`http://localhost:3000/food/sort`),
             Component : HomePage
         }
     ]

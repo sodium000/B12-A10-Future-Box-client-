@@ -6,14 +6,14 @@ import Navbars from '../../NavBar/Navbars';
 const AllFoodShow = () => {
     const AllFood = useLoaderData();
     return (
-        <div className='bg-[url(/Animated Shape.svg)]'>
+        <div className='bg-linear-to-br from-cyan-600 via-white to-purple-500'>
             <Navbars></Navbars>
-             <div className="min-h-screen container mx-auto bg-linear-to-br from-cyan-100 via-white to-purple-100 py-16 px-6">
+             <div className="min-h-screen container mx-auto  py-16 px-6 bg-[url(/AnimatedShape.svg)] bg-cover bg-center bg-no-repeat">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold text-slate-800 mb-2">
+        <h1 className="text-4xl font-extrabold text-slate-300 mb-2">
           🍽️ Available Food Donations
         </h1>
-        <p className="text-slate-600 text-lg">
+        <p className="text-slate-300 text-lg">
           Fresh, free, and shared with kindness 💚
         </p>
       </div>
