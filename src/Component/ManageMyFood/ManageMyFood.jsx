@@ -148,83 +148,132 @@ export default function FoodTable() {
         ) : filtered.length === 0 ? (
           <p className="text-center text-gray-500 py-10">No foods found.</p>
         ) : (
-          <div className="bg-white shadow-xl rounded-xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                      Image
-                    </th>
-                    <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                      Food Name
-                    </th>
-                    <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider hidden md:table-cell">
-                      Donor
-                    </th>
-                    <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                      Serve
-                    </th>
-                    <th className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {filtered.map((food) => (
-                    <tr
-                      key={food._id}
-                      className="hover:bg-indigo-50/20 transition duration-150 ease-in-out"
-                    >
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
-                        <div className="w-16 h-12 rounded overflow-hidden shadow-md">
-                          <img
-                            src={food.FoodImag}
-                            alt={food.Food_name}
-                            className="object-cover w-full h-full"
-                          />
-                        </div>
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap align-middle">
-                        <div className="text-sm font-medium text-gray-900">
-                          {food.Food_name}
-                        </div>
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap align-middle text-sm text-gray-600 hidden md:table-cell">
-                        {food.Donor_name}
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap align-middle text-sm text-gray-600">
-                        {food.Food_serve}
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap justify-items-center">
-                        <div className="flex flex-col sm:flex-row justify-end items-stretch sm:items-center gap-2">
-                          <button
-                            onClick={() => openEdit(food)}
-                            className="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-xs sm:text-sm bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-150 ease-in-out"
-                            title="Edit Food"
-                          >
-                            <FiEdit2 className="w-4 h-4" />{" "}
-                            <span className="hidden sm:inline">Edit</span>
-                          </button>
-                          <button
-                            onClick={() => handleDelete(food._id)}
-                            disabled={isDeleting}
-                            className="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-xs sm:text-sm bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-150 ease-in-out disabled:opacity-50"
-                            title="Delete Food"
-                          >
-                            <MdDelete className="w-4 h-4" />{" "}
-                            <span className="hidden sm:inline">
-                              {isDeleting ? "Deleting..." : "Delete"}
-                            </span>
-                          </button>
-                        </div>
-                      </td>
+          <>
+            {/* Desktop Table View */}
+            <div className="hidden md:block bg-white shadow-xl rounded-xl overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                        Image
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                        Food Name
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                        Donor
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                        Serve
+                      </th>
+                      <th className="px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider">
+                        Actions
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {filtered.map((food) => (
+                      <tr
+                        key={food._id}
+                        className="hover:bg-indigo-50/20 transition duration-150 ease-in-out"
+                      >
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="w-16 h-12 rounded overflow-hidden shadow-md">
+                            <img
+                              src={food.FoodImag}
+                              alt={food.Food_name}
+                              className="object-cover w-full h-full"
+                            />
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap align-middle">
+                          <div className="text-sm font-medium text-gray-900">
+                            {food.Food_name}
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap align-middle text-sm text-gray-600">
+                          {food.Donor_name}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap align-middle text-sm text-gray-600">
+                          {food.Food_serve}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap justify-items-center">
+                          <div className="flex justify-end items-center gap-2">
+                            <button
+                              onClick={() => openEdit(food)}
+                              className="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-sm bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-150 ease-in-out"
+                              title="Edit Food"
+                            >
+                              <FiEdit2 className="w-4 h-4" />
+                              <span>Edit</span>
+                            </button>
+                            <button
+                              onClick={() => handleDelete(food._id)}
+                              disabled={isDeleting}
+                              className="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-sm bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-150 ease-in-out disabled:opacity-50"
+                              title="Delete Food"
+                            >
+                              <MdDelete className="w-4 h-4" />
+                              <span>{isDeleting ? "Deleting..." : "Delete"}</span>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
+
+            {/* Mobile Card View */}
+            <div className="md:hidden space-y-4">
+              {filtered.map((food) => (
+                <div
+                  key={food._id}
+                  className="bg-white shadow-lg rounded-xl p-4 border border-gray-200"
+                >
+                  <div className="flex gap-4 mb-4">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                      <img
+                        src={food.FoodImag}
+                        alt={food.Food_name}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base font-semibold text-gray-900 mb-1 truncate">
+                        {food.Food_name}
+                      </h3>
+                      <p className="text-sm text-gray-600 truncate">
+                        <span className="font-medium">Donor:</span> {food.Donor_name}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        <span className="font-medium">Serve:</span> {food.Food_serve}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => openEdit(food)}
+                      className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 text-sm bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-150 ease-in-out"
+                    >
+                      <FiEdit2 className="w-4 h-4" />
+                      <span>Edit</span>
+                    </button>
+                    <button
+                      onClick={() => handleDelete(food._id)}
+                      disabled={isDeleting}
+                      className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 text-sm bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-150 ease-in-out disabled:opacity-50"
+                    >
+                      <MdDelete className="w-4 h-4" />
+                      <span>{isDeleting ? "Deleting..." : "Delete"}</span>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
         )}
 
         {/* ✅ Edit Modal */}

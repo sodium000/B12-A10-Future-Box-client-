@@ -175,52 +175,52 @@ const FoodDetails = () => {
   return (
     <>
       <Navbars></Navbars>
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 my-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 my-6 sm:my-8 lg:my-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           <div className="w-full">
             <div className="rounded-2xl overflow-hidden shadow-xl bg-base-100">
               <img
                 src={FoodImag}
                 alt=""
-                className="w-full h-[360px] object-cover"
+                className="w-full h-[250px] sm:h-[300px] lg:h-[360px] object-cover"
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
-            <div className="rounded-2xl p-6 shadow-xl bg-base-100">
-              <h1 className="text-2xl sm:text-3xl font-bold mb-2">{Food_name}</h1>
-              <p className="text-base-content/70">
+            <div className="rounded-2xl p-4 sm:p-6 shadow-xl bg-base-100">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 break-words">{Food_name}</h1>
+              <p className="text-sm sm:text-base text-base-content/70 break-words">
                 {Description}
               </p>
             </div>
 
-            <div className="rounded-2xl p-6 shadow-xl bg-base-100">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-2xl p-4 sm:p-6 shadow-xl bg-base-100">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <DetailItem label="Quantity" value={Food_serve} />
                 <DetailItem label="Pickup Location" value={Location} />
                 <DetailItem label="Expire Date" value={Date} />
               </div>
             </div>
 
-            <div className="rounded-2xl p-6 shadow-xl bg-base-100 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
+            <div className="rounded-2xl p-4 sm:p-6 shadow-xl bg-base-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
                 <div className="avatar">
-                  <div className="w-14 h-14 rounded-full ring ring-primary/30 ring-offset-2 ring-offset-base-100 overflow-hidden">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full ring ring-primary/30 ring-offset-2 ring-offset-base-100 overflow-hidden">
                     <img src={Donor_img} alt="" />
                   </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-lg">
+                <div className="min-w-0 flex-1">
+                  <p className="font-semibold text-base sm:text-lg truncate">
                     {Email}
                   </p>
-                  <p className="text-sm text-base-content/70">
+                  <p className="text-xs sm:text-sm text-base-content/70 truncate">
                     {Donor_name}
                   </p>
                 </div>
               </div>
 
-              <button onClick={() => openEdit()} className="btn btn-primary btn-wide">
+              <button onClick={() => openEdit()} className="btn btn-primary w-full sm:w-auto btn-wide">
                 Request Food
               </button>
             </div>
@@ -240,7 +240,7 @@ const FoodDetails = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: -50 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
             >
               <StyledWrapper>
                 <div className="form-container">
@@ -251,19 +251,19 @@ const FoodDetails = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="textarea">Why need Food</label>
-                      <textarea name="textarea" id="textarea" rows={10} cols={50} required defaultValue={""} />
+                      <textarea name="textarea" id="textarea" rows={6} className="resize-y" required defaultValue={""} />
                     </div>
-                    <div className=" rounded-lg max-w-[350px]">
+                    <div className="rounded-lg w-full">
                       <label className="text-[#717171] text-sm">
                         Phone number
                       </label>
-                      <div className="relative mt-2 max-w-xs text-white">
+                      <div className="relative mt-2 w-full text-white">
                         <div className="absolute inset-y-0 left-3 my-auto h-6 flex items-center border-r pr-2">
-                          <select className="text-sm outline-none rounded-lg h-full">
+                          <select className="text-sm outline-none rounded-lg h-full bg-transparent">
                             <option>BD</option>
                           </select>
                         </div>
-                        <input required type="text" name="PhoneNumber" placeholder="+1 (555) 000-000" className="w-full pl-18 pr-3 py-2 appearance-none bg-transparent outline-none border border-gray-700 focus:border-[#e81cff] shadow-sm rounded-lg" />
+                        <input required type="text" name="PhoneNumber" placeholder="+1 (555) 000-000" className="w-full pl-20 pr-3 py-2 appearance-none bg-transparent outline-none border border-gray-700 focus:border-[#e81cff] shadow-sm rounded-lg" />
                       </div>
                     </div>
                     <label className="cyberpunk-checkbox-label">
@@ -279,9 +279,9 @@ const FoodDetails = () => {
                         Pending
                       </p>
                     </div>
-                    <div className="flex justify-between">
-                      <button className="form-submit-btn" type="submit">Request Food</button>
-                      <button onClick={closeModal} className="form-submit-btn" type="button">Close</button>
+                    <div className="flex flex-col sm:flex-row justify-between gap-3">
+                      <button className="form-submit-btn w-full sm:w-auto" type="submit">Request Food</button>
+                      <button onClick={closeModal} className="form-submit-btn w-full sm:w-auto" type="button">Close</button>
                     </div>
                   </form>
                 </div>
@@ -308,8 +308,8 @@ const FoodDetails = () => {
         </div>
       )}
 
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-extrabold text-gray-900 mb-8 text-center sm:text-left">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6 sm:mb-8 text-center sm:text-left">
           Food Request Approval Queue
         </h1>
         <div className="hidden md:block shadow-2xl rounded-xl overflow-hidden bg-white">
@@ -349,29 +349,31 @@ const FoodDetails = () => {
                     <td className={`py-4 px-6 text-sm text-center font-medium ${c.text} ${c.bg}`}>
                       {statues}
                     </td>
-                    <td className="px-6 py-4 space-x-2 space-y-2 text-start md:text-center">
-                      <button
-                        onClick={() => handleAction(_id, "Accepted")}
-                        disabled={disabled}
-                        className={`bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ${
-                          disabled
-                            ? "opacity-50 cursor-not-allowed"
-                            : "hover:bg-green-600 hover:shadow-lg"
-                        }`}
-                      >
-                        Accept
-                      </button>
-                      <button
-                        onClick={() => handleAction(_id, "Rejected")}
-                        disabled={disabled}
-                        className={`bg-red-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ${
-                          disabled
-                            ? "opacity-50 cursor-not-allowed"
-                            : "hover:bg-red-600 hover:shadow-lg"
-                        }`}
-                      >
-                        Reject
-                      </button>
+                    <td className="px-6 py-4">
+                      <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-2">
+                        <button
+                          onClick={() => handleAction(_id, "Accepted")}
+                          disabled={disabled}
+                          className={`bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 text-sm ${
+                            disabled
+                              ? "opacity-50 cursor-not-allowed"
+                              : "hover:bg-green-600 hover:shadow-lg"
+                          }`}
+                        >
+                          Accept
+                        </button>
+                        <button
+                          onClick={() => handleAction(_id, "Rejected")}
+                          disabled={disabled}
+                          className={`bg-red-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 text-sm ${
+                            disabled
+                              ? "opacity-50 cursor-not-allowed"
+                              : "hover:bg-red-600 hover:shadow-lg"
+                          }`}
+                        >
+                          Reject
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 );
@@ -439,11 +441,12 @@ const FoodDetails = () => {
 
 const StyledWrapper = styled.div`
   .form-container {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     background: linear-gradient(#212121, #212121) padding-box,
                 linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
     border: 2px solid transparent;
-    padding: 32px 24px;
+    padding: 24px 20px;
     font-size: 14px;
     font-family: inherit;
     color: white;
@@ -452,6 +455,13 @@ const StyledWrapper = styled.div`
     gap: 20px;
     box-sizing: border-box;
     border-radius: 16px;
+    margin: 20px;
+    
+    @media (max-width: 640px) {
+      padding: 20px 16px;
+      max-width: calc(100% - 40px);
+      margin: 10px;
+    }
   }
 
   .form-container button:active {
@@ -492,12 +502,16 @@ const StyledWrapper = styled.div`
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
-    resize: none;
+    resize: vertical;
     color: #fff;
-    height: 96px;
+    min-height: 96px;
     border: 1px solid #414141;
     background-color: transparent;
     font-family: inherit;
+    
+    @media (max-width: 640px) {
+      min-height: 80px;
+    }
   }
 
   .form-container .form-group input::placeholder {
@@ -516,13 +530,11 @@ const StyledWrapper = styled.div`
 
   .form-container .form-submit-btn {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    align-self: flex-start;
     font-family: inherit;
     color: #717171;
     font-weight: 600;
-    width: 40%;
     background: #313131;
     border: 1px solid #414141;
     padding: 12px 16px;
@@ -531,6 +543,11 @@ const StyledWrapper = styled.div`
     margin-top: 8px;
     cursor: pointer;
     border-radius: 6px;
+    transition: all 0.3s ease;
+    
+    @media (max-width: 640px) {
+      width: 100%;
+    }
   }
 
   .form-container .form-submit-btn:hover {

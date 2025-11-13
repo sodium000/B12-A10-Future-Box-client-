@@ -96,18 +96,18 @@ const Regiestration = () => {
   };
   return (
     <div>
-      <div className="min-h-screen  flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-4 sm:p-6">
         <motion.div
           initial={{ opacity: 0, y: 60, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 3, ease: "easeOut" }}
-          className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl w-full max-w-md border border-white/20"
+          className="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-md border border-white/20"
         >
           <motion.h2
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="text-3xl font-bold text-center text-white mb-6"
+            className="text-2xl sm:text-3xl font-bold text-center text-white mb-4 sm:mb-6"
           >
             Create an Account
           </motion.h2>
@@ -169,11 +169,14 @@ const Regiestration = () => {
                 className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 transition duration-300"
                 required
               />
-              <button onClick={(e) => {
+              <button 
+                type="button"
+                onClick={(e) => {
                 e.preventDefault()
                 settoggle(!toggle)
 
-              }} >{toggle ? <IoIosEyeOff className="btn btn-xs border-0 rounded-full  absolute right-1.5 top-8 z-10 bg-linear-to-br from-orange-600 via-purple-600 to-pink-500" /> : <IoIosEye className="btn btn-xs border-0 rounded-full absolute right-1.5 top-8  z-10 bg-linear-to-br from-orange-600 via-purple-600 to-pink-500" />}
+              }} className="absolute right-2 top-9 z-10 p-1">
+                {toggle ? <IoIosEyeOff className="w-5 h-5 text-gray-200" /> : <IoIosEye className="w-5 h-5 text-gray-200" />}
               </button>
               {
                 errors.password && <p className="text-red-700 text-sm">{errors.password}</p>

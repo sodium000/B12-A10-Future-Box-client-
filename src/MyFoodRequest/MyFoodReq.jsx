@@ -45,26 +45,27 @@ export default function FoodTableSimple() {
     <>
       <Navbars />
 
-      <div className="p-6 max-w-6xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
-          <h2 className="text-3xl font-bold text-gray-800 tracking-tight">
+      <div className="p-4 sm:p-6 max-w-6xl mx-auto">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
             🍱 Food Inventory
           </h2>
           {/* Search bar */}
           <div className="relative w-full sm:w-72">
             <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
-              <FiSearch />
+              <FiSearch className="w-4 h-4 sm:w-5 sm:h-5" />
             </span>
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search foods..."
-              className="pl-10 pr-4 py-2 w-full border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none shadow-sm"
+              className="pl-9 sm:pl-10 pr-4 py-2 w-full text-sm sm:text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none shadow-sm"
             />
           </div>
         </div>
 
-        <div className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">
+        {/* Desktop Table View */}
+        <div className="hidden md:block bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-indigo-50">
               <tr>
@@ -128,6 +129,49 @@ export default function FoodTableSimple() {
               </AnimatePresence>
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden space-y-4">
+          <AnimatePresence>
+            {loading ? (
+              <div className="text-center py-10 text-gray-500">Loading...</div>
+            ) : filteredFoods.length === 0 ? (
+              <div className="text-center py-10 text-gray-500">No foods found.</div>
+            ) : (
+              filteredFoods.map((food, index) => (
+                <motion.div
+                  key={food._id || index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="bg-white shadow-lg rounded-xl p-4 border border-gray-200"
+                >
+                  <div className="mb-3">
+                    <h3 className="text-base font-semibold text-gray-900 mb-1">
+                      {food.foodName}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      <span className="font-medium">Donor:</span> {food.Donor_name}
+                    </p>
+                  </div>
+                  <div>
+                    <span
+                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
+                        food.statues === "Accepted"
+                          ? "bg-green-300 text-green-700"
+                          : food.statues=== "Pending"
+                          ? "bg-amber-300 text-red-700"
+                          : "bg-red-300 text-red-700"
+                      }`}
+                    >
+                      {food.statues}
+                    </span>
+                  </div>
+                </motion.div>
+              ))
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </>

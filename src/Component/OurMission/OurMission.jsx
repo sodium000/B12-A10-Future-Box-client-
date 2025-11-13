@@ -1,62 +1,48 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { motion } from 'framer-motion';
+import { FaArrowRight } from 'react-icons/fa';
 
-const OurMission = () => {
-    return (
-        <div className=''>
-            <div className=' bg-[url("/digital-navigation-compass-abstract-data-visualizations-shines-against-dark-background-353353549.webp")] bg-cover bg-center bg-no-repeat flex items-start justify-center p-4 sm:p-8'>
-                <div
-                    className="w-full max-w-6xl mt-10 p-6 md:p-0 
-                    bg-blend-screen shadow-none rounded-none 
-                    relative overflow-hidden
-                    flex flex-col md:flex-row items-center justify-center"
-                >
-                    <motion.div
-                        className="md:w-1/2 p-4 md:p-8 lg:p-12 text-center md:text-left"
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 2, ease: "easeOut" }}
-                        viewport={{ once: true }}
-                    >
-                        <h1 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-blue-600 mb-6 leading-tight font-sans  inline-block px-4 py-2">
-                            The Largest Crop Ever
-                        </h1>
+const BusinessLandingPage = () => {
+  return (
+    <div className="min-h-screen bg-linear-to-br from-purple-300 via-purple-100 to-purple-300 flex items-center justify-center p-8">
+      <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+        <header className="flex justify-between items-center mb-16">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-slate-800 rounded-full"></div>
+            <span className="text-slate-800 font-bold text-xl">YOUR LOGO</span>
+          </div>
 
-                        <p className="text-md text-gray-500 mb-4 max-w-xl mx-auto md:mx-0">
-                            Stimulates vast a real proven works discount secure care. Market. Invigorate a
-                            awesome handcrafted bigger comes newer recommended lifetime. Evulates
-                            vast a real proven works discount secure care. Market Invigorate a awesome
-                            handcrafted bigger comes newer recommended lifetime. Odor to yummy high
-                            racy bonus soaking mouthwatering. First superior
-                        </p>
+        </header>
 
-                        <button
-                            className="px-8 py-3 border-2 border-yellow-400 text-yellow-600 font-semibold 
-                            rounded-md hover:bg-yellow-50 transition duration-300 
-                            transform hover:scale-105 active:scale-95"
-                        >
-                            Search
-                        </button>
-                    </motion.div>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="text-6xl md:text-7xl font-bold text-slate-800 mb-4">
+              PlatesShare
+            </h1>
+            <h2 className="text-2xl text-gray-400 font-light mb-6 tracking-wider">
+              Engage People
+            </h2>
+            <p className="text-gray-600 leading-relaxed mb-8">
+              "Our mission at Engage People is to create spaces where diverse individuals can connect, collaborate, and grow together.We are the online destination designed to bring people together. Engage People is where connections are made and communities thrive."
+            </p>
+            <button className="bg-linear-to-r from-yellow-400 to-orange-500 text-white font-bold px-8 py-4 rounded-full flex items-center gap-2 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200">
+              READ MORE
+              <FaArrowRight />
+            </button>
+          </div>
 
-                    <motion.div
-                        className="md:w-1/2 mt-8 md:mt-0 flex justify-center items-center"
-                        initial={{ opacity: 0, x: 100 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 2, ease: "easeOut" }}
-                        viewport={{ once: true }}
-                    >
-                        <img
-                            src="https://placehold.co/800x600/e0d8c0/333333?text=Harvest+Field"
-                            alt="Golden hay bales in a sunny field."
-                            className="w-full h-auto object-cover max-h-[600px] md:max-h-full"
-                        />
-                    </motion.div>
-                </div>
+          <div className="relative">
+            <div className="relative">
+              <img
+                src="/business-growth-chart-illustration-svg-download-png-4720375.webp"
+                alt="Business Growth Illustration"
+                className="w-full h-auto"
+              />
             </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
-export default OurMission;
+export default BusinessLandingPage;

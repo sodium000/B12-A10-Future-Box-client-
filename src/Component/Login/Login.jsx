@@ -49,18 +49,18 @@ const Login = () => {
   };
     return (
         <div>
-            <div className="min-h-[92vh] flex items-center justify-center bg-linear-to-br from-gray-900 via-purple-900 to-indigo-900 p-4">
+            <div className="min-h-[92vh] flex items-center justify-center bg-linear-to-br from-gray-900 via-purple-900 to-indigo-900 p-4 sm:p-6">
                 <motion.div
                     initial={{ opacity: 0, rotateY: -15 }}
                     animate={{ opacity: 1, rotateY: 0 }}
                     transition={{ duration: 1.2, ease: "easeInOut" }}
-                    className="bg-black/30 backdrop-blur-md p-8 rounded-2xl shadow-[0_0_40px_rgba(168,85,247,0.3)] w-full max-w-md border border-white/10"
+                    className="bg-black/30 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-[0_0_40px_rgba(168,85,247,0.3)] w-full max-w-md border border-white/10"
                 >
                     <motion.h2
                         initial={{ opacity: 0, y: -30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 1, ease: "easeInOut" }}
-                        className="text-3xl font-bold text-center text-white mb-6"
+                        className="text-2xl sm:text-3xl font-bold text-center text-white mb-4 sm:mb-6"
                     >
                         Welcome Back 👋
                     </motion.h2>
@@ -100,11 +100,14 @@ const Login = () => {
                                 className="w-full px-4 py-2 rounded-lg bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all duration-200"
                                 required
                             />
-                            <button onClick={(e) => {
+                            <button 
+                                type="button"
+                                onClick={(e) => {
                                 e.preventDefault()
                                 settoggle(!toggle)
 
-                            }} >{toggle ? <IoIosEyeOff className="btn btn-xs border-0 rounded-full  absolute right-1.5 top-8 z-10 bg-linear-to-br from-gray-700 via-purple-700 to-indigo-700" /> : <IoIosEye className="btn btn-xs border-0 rounded-full absolute right-1.5 top-8  z-10 bg-linear-to-br from-gray-700 via-purple-700 to-indigo-700" />}
+                            }} className="absolute right-2 top-9 z-10 p-1">
+                                {toggle ? <IoIosEyeOff className="w-5 h-5 text-gray-300" /> : <IoIosEye className="w-5 h-5 text-gray-300" />}
                             </button>
                         </div>
 
