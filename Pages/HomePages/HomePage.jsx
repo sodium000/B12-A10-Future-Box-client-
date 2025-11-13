@@ -3,9 +3,9 @@ import FoodCard from '../../src/FootCard/FoodCard'
 import HowWork from '../../src/Component/HowWork/HowWork';
 import OurMission from '../../src/Component/OurMission/OurMission';
 import { useLoaderData } from 'react-router';
+import Footer from '../../src/Footer/Footer';
 
 const HomePage = () => {
-    console.log("Tom")
     const AllFood = useLoaderData();
     return (
     <div className=''>
@@ -20,6 +20,8 @@ const HomePage = () => {
         </div>
             <HowWork></HowWork>
             <OurMission></OurMission>
+            <Footer></Footer>
+            
     </div>
     );
 };

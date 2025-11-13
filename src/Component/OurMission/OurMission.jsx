@@ -7,8 +7,9 @@ const BusinessLandingPage = () => {
       <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl p-8 md:p-12">
         <header className="flex justify-between items-center mb-16">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-slate-800 rounded-full"></div>
-            <span className="text-slate-800 font-bold text-xl">YOUR LOGO</span>
+             <img src="/Screenshot_4.png" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full sm:ring-offset-2" alt="" />
+                <span className="text-lg sm:text-xl md:text-2xl font-bold underline">Plates</span>
+             <span className=" italic text-fuchsia-800 text-lg sm:text-xl md:text-2xl font-bold">Share</span>
           </div>
 
         </header>

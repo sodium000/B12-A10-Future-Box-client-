@@ -10,7 +10,7 @@ import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import ManageMyFood from '../src/Component/ManageMyFood/ManageMyFood'
 import MyFoodReq from '../src/MyFoodRequest/MyFoodReq'
 import AllFoodShow from "../src/Component/AllFoodShow/AllFoodShow";
-import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
+import ErrorPage from "../src/Error/Error";
 
 
  const router = createBrowserRouter([
@@ -57,10 +57,10 @@ import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
     element: <AllFoodShow></AllFoodShow> ,
   },
   {
-    path:"/food/:id",
-    loader : ({params})=> fetch(`http://localhost:3000/food/${params.id}`),
-    element:  <PrivateRoutes><FoodDetails></FoodDetails></PrivateRoutes> 
-  }
+    path: '/*',
+    element: <ErrorPage></ErrorPage> ,
+  },
+ 
 ]);
 
  export default router

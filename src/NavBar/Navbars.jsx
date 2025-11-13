@@ -93,9 +93,11 @@ const Navbars = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-1 sm:gap-2 cursor-pointer"
           >
-            <span className="text-lg sm:text-xl md:text-2xl font-bold">
-              Plates<span className="text-blue-600">Share</span>
+            <span className="text-lg sm:text-xl md:text-2xl font-bold underline">
+             Plates
             </span>
+              <img src="/Screenshot_4.png" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full ring ring-primary ring-offset-base-300 ring-offset-1 sm:ring-offset-2" alt="" />
+              <span className=" italic text-fuchsia-800 text-lg sm:text-xl md:text-2xl font-bold">Share</span>
           </motion.div>
         </div>
 
