@@ -234,7 +234,7 @@ export default function FoodTable() {
                   className="bg-white shadow-lg rounded-xl p-4 border border-gray-200"
                 >
                   <div className="flex gap-4 mb-4">
-                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md shrink-0">
                       <img
                         src={food.FoodImag}
                         alt={food.Food_name}

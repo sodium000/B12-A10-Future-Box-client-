@@ -3,14 +3,15 @@ import React, { use, useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
 import Navbars from "../../NavBar/Navbars";
 import Swal from "sweetalert2";
 
 
 const Login = () => {
-    let navigate = useNavigate()
+    const navigate = useNavigate()
+    const location = useLocation();
     const [toggle, settoggle] = useState(false)
     const [formData, setFormData] = useState({
         email: "",
@@ -34,12 +35,26 @@ const Login = () => {
                 icon: "success",
                 draggable: true
             });
-            navigate('/');
+            navigate(`${location.state ? location.state : "/"}`);
         })
             .catch((error) => {
                 if (error.code === 'auth/invalid-credential') {
                     Swal.fire({
                         title: "User not Found",
+                        icon: "error",
+                        draggable: true
+                    });
+                }
+                   if (error.code === "auth/missing-password") {
+                    Swal.fire({
+                        title: "Please Input Password",
+                        icon: "error",
+                        draggable: true
+                    });
+                }
+                if (error.code === "auth/invalid-email") {
+                    Swal.fire({
+                        title: "Give Your Email ",
                         icon: "error",
                         draggable: true
                     });

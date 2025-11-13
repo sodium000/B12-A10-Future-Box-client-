@@ -30,7 +30,7 @@ export default function ErrorPage() {
       </motion.div>
 
       <p className="mt-8 text-white/70 text-sm">
-        Designed with  using <span className="font-semibold">Raisul Islam Tonmoy</span>
+        Designed by <span className="font-semibold">Raisul Islam Tonmoy</span>
       </p>
     </div>
   );

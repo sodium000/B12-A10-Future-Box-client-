@@ -26,7 +26,6 @@ const Regiestration = () => {
     const googleLogin = () => {
       singInwithGoogle()
         .then((result) => {
-          console.log(result.user)
           const newUser = {
             name: result.user.displayName,
             email: result.user.email,

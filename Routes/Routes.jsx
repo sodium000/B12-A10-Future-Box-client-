@@ -11,6 +11,7 @@ import ManageMyFood from '../src/Component/ManageMyFood/ManageMyFood'
 import MyFoodReq from '../src/MyFoodRequest/MyFoodReq'
 import AllFoodShow from "../src/Component/AllFoodShow/AllFoodShow";
 import ErrorPage from "../src/Error/Error";
+import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
 
 
  const router = createBrowserRouter([
@@ -55,6 +56,16 @@ import ErrorPage from "../src/Error/Error";
     path: "/allfood",
     loader: ()=> fetch('https://b12-a10-future-box-server-eight.vercel.app/food'),
     element: <AllFoodShow></AllFoodShow> ,
+  },
+  {
+    path: "/food/:id",
+    loader: ({ params }) =>
+      fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/${params.id}`),
+    element: (
+      <PrivateRoutes>
+        <FoodDetails></FoodDetails>
+      </PrivateRoutes>
+    ),
   },
   {
     path: '/*',
