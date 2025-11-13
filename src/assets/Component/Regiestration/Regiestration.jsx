@@ -34,7 +34,7 @@ const Regiestration = () => {
           }
 
 
-          // fetch('http://localhost:3000/users', {
+          // fetch('https://b12-a10-future-box-server-eight.vercel.app/users', {
           //   method : 'POST',
           //   headers :{
           //     'content-type' : 'application/json'

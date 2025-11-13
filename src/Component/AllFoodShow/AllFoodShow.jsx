@@ -1,13 +1,18 @@
-import React from 'react';
+
 import { useLoaderData } from 'react-router';
 import FoodCard from '../../FootCard/FoodCard';
 import Navbars from '../../NavBar/Navbars';
 import Footer from '../../Footer/Footer';
+import { use } from 'react';
+import AuthContext from '../../AuthContext/AuthContext';
 
 const AllFoodShow = () => {
     const AllFood = useLoaderData();
+    const {loading} = use(AuthContext)
     return (
-        <div className='bg-linear-to-br from-cyan-600 via-white to-purple-500 '>
+        <>
+        {
+          loading ? <div className='flex mt-50 justify-center items-center'><span className="loading loading-spinner text-info"></span> </div>: <div className='bg-linear-to-br from-cyan-600 via-white to-purple-500 '>
             <Navbars></Navbars>
              <div className="min-h-screen container mx-auto py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-[url(/AnimatedShape.svg)] bg-cover bg-center bg-no-repeat">
       <div className="text-center mb-8 sm:mb-10 md:mb-12">
@@ -26,6 +31,8 @@ const AllFoodShow = () => {
     </div>
     <Footer></Footer>
         </div>
+        }
+        </>
     );
 };
 

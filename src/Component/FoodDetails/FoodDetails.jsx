@@ -78,7 +78,7 @@ const FoodDetails = () => {
       Req_photoURL: user.photoURL || '',
       statues: "Pending"
     };
-    fetch('http://localhost:3000/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(FoodReq) })
+    fetch('https://b12-a10-future-box-server-eight.vercel.app/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(FoodReq) })
     .then(data=>console.log(data))
     setIsModalOpen(false);
   }
@@ -104,7 +104,7 @@ const FoodDetails = () => {
   //   const fetchFoodList = async () => {
   //     try {
   //       setLoading(true);
-  //       const response = await fetch(`http://localhost:3000/food/reqlist/${_id}`);
+  //       const response = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/reqlist/${_id}`);
   //       const data = await response.json();
   //       setFoodList(data);
   //     } catch (error) {
@@ -122,7 +122,7 @@ const FoodDetails = () => {
       const fetchFoodList = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:3000/food/reqlist/${_id}`);
+        const response = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/reqlist/${_id}`);
         const data = await response.json();
         setFoodList(data);
       } catch (error) {
@@ -156,7 +156,7 @@ const FoodDetails = () => {
 
     const handleAction = async (id, action) => {
        try {
-      const res = await fetch(`http://localhost:3000/food/requpdate/${id}`, {
+      const res = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/requpdate/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

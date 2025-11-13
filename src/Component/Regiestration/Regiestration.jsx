@@ -31,7 +31,7 @@ const Regiestration = () => {
     SignByGoogle()
       .then((result) => {
            Swal.fire({
-          title: "Drag me!",
+          title: "Welcome to home page",
           icon: "success",
           draggable: true
         });

@@ -20,7 +20,7 @@ import ErrorPage from "../src/Error/Error";
     children : [
         {
             index : true,
-            loader: ()=> fetch(`http://localhost:3000/allfood/sort`),
+            loader: ()=> fetch(`https://b12-a10-future-box-server-eight.vercel.app/allfood/sort`),
             Component : HomePage
         }
     ]
@@ -53,7 +53,7 @@ import ErrorPage from "../src/Error/Error";
   },
   {
     path: "/allfood",
-    loader: ()=> fetch('http://localhost:3000/food'),
+    loader: ()=> fetch('https://b12-a10-future-box-server-eight.vercel.app/food'),
     element: <AllFoodShow></AllFoodShow> ,
   },
   {
