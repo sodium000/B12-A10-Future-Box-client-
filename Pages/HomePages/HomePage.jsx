@@ -6,8 +6,6 @@ import { useLoaderData } from 'react-router';
 
 const HomePage = () => {
     const AllFood = useLoaderData();
-
-
     return (
     <div>
         <div className='bg-[url(/abstract-textured-backgound.jpg)] bg-cover bg-center bg-no-repeat'>

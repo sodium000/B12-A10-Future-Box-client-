@@ -20,7 +20,7 @@ import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
     children : [
         {
             index : true,
-            loader: ()=> fetch(`http://localhost:3000/food/sort`),
+            loader: ()=> fetch(`http://localhost:3000/allfood/sort`),
             Component : HomePage
         }
     ]
@@ -53,12 +53,13 @@ import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
   },
   {
     path: "/allfood",
-    loader: ()=> fetch(`http://localhost:3000/food`),
+    loader: ()=> fetch('http://localhost:3000/food'),
     element: <AllFoodShow></AllFoodShow> ,
   },
   {
-    path: "/food/:id",
-    element: <FoodDetails></FoodDetails>,
+    path:"/food/:id",
+    loader : ({params})=> fetch(`http://localhost:3000/food/${params.id}`),
+    element:  <PrivateRoutes><FoodDetails></FoodDetails></PrivateRoutes> 
   }
 ]);
 
