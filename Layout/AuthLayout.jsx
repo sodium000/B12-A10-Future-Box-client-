@@ -1,12 +1,12 @@
 import React from 'react';
-import Navbar from '../src/NavBar/Navbars'
 import { Outlet } from 'react-router';
+import Footer from '../src/Footer/Footer'
 
 const AuthLayout = () => {
     return (
         <div>
-            <Navbar></Navbar>
             <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };

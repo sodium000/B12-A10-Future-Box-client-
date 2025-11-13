@@ -4,6 +4,7 @@ import { FiPackage, FiMapPin, FiCalendar, FiUser, FiMail, FiCamera, FiTag } from
 import Navbars from '../../NavBar/Navbars';
 import { use } from 'react';
 import AuthContext from '../../AuthContext/AuthContext';
+import Footer from '../../Footer/Footer';
 
 const FoodDonationForm = () => {
     const {user} = use(AuthContext)
@@ -66,9 +67,9 @@ const FoodDonationForm = () => {
 
     return (
         <>
-        <Navbars></Navbars>
-        
         <div className='bg-[url(/coolbackgrounds-fractalize-cool_backgrounds.png)] bg-cover bg-center bg-no-repeat min-h-screen'>
+        <Navbars></Navbars>
+        <div className=''>
             <form onSubmit={foodAdd} className='max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 not-first:shadow-xl rounded-xl'>
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-green-700 mb-4 sm:mb-6 border-b pb-2 sm:pb-3">
                     Food Added
@@ -196,6 +197,8 @@ const FoodDonationForm = () => {
                 </div>
             </form>
         </div>
+     </div>
+     <Footer></Footer>
     </>
     );
 };

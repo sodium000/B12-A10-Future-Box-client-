@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import FoodCard from '../../FootCard/FoodCard';
 import Navbars from '../../NavBar/Navbars';
+import Footer from '../../Footer/Footer';
 
 const AllFoodShow = () => {
     const AllFood = useLoaderData();
@@ -23,6 +24,7 @@ const AllFoodShow = () => {
         }
       </div>
     </div>
+    <Footer></Footer>
         </div>
     );
 };

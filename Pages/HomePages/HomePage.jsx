@@ -2,7 +2,7 @@ import React from 'react';
 import FoodCard from '../../src/FootCard/FoodCard'
 import HowWork from '../../src/Component/HowWork/HowWork';
 import OurMission from '../../src/Component/OurMission/OurMission';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import Footer from '../../src/Footer/Footer';
 
 const HomePage = () => {
@@ -17,6 +17,15 @@ const HomePage = () => {
                     }
                 </div>
             </div>
+              <Link to='/allfood'>
+                            <button
+                                className="px-4 mb-10 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-yellow-400 text-yellow-400 sm:text-yellow-600 font-semibold 
+                            rounded-md hover:bg-yellow-50 transition duration-300 text-sm sm:text-base
+                            transform hover:scale-105 active:scale-95"
+                            >
+                                Show All Food 
+                            </button>
+                        </Link>
         </div>
             <HowWork></HowWork>
             <OurMission></OurMission>

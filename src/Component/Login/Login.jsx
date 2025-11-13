@@ -5,6 +5,8 @@ import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
+import Navbars from "../../NavBar/Navbars";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -15,7 +17,7 @@ const Login = () => {
         password: "",
     });
 
-    const { LogInwithemail,SignByGoogle } = use(AuthContext);
+    const { LogInwithemail, SignByGoogle } = use(AuthContext);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,28 +29,43 @@ const Login = () => {
         const Password = formData.password
         LogInwithemail(Email, Password).then((userCredential) => {
             const user = userCredential.user;
-            console.log(user)
+            Swal.fire({
+                title: "Welcome to home page ",
+                icon: "success",
+                draggable: true
+            });
             navigate('/');
         })
             .catch((error) => {
-                console.log(error)
+                if (error.code === 'auth/invalid-credential') {
+                    Swal.fire({
+                        title: "User not Found",
+                        icon: "error",
+                        draggable: true
+                    });
+                }
             });
 
     };
 
-     const googleLogin = () => {
-    SignByGoogle()
-      .then((result) => {
-        console.log(result.user);
-        navigate('/');
+    const googleLogin = () => {
+        SignByGoogle()
+            .then((result) => {
+                Swal.fire({
+                    title: "Drag me!",
+                    icon: "success",
+                    draggable: true
+                });
+                navigate('/');
 
-      }).catch((error) => {
-        console.log(error);
-        // ...
-      });
-  };
+            }).catch((error) => {
+                console.log(error);
+                // ...
+            });
+    };
     return (
-        <div>
+        <div className="bg-linear-to-br from-gray-900 via-purple-900 to-indigo-900">
+            <Navbars></Navbars>
             <div className="min-h-[92vh] flex items-center justify-center bg-linear-to-br from-gray-900 via-purple-900 to-indigo-900 p-4 sm:p-6">
                 <motion.div
                     initial={{ opacity: 0, rotateY: -15 }}
@@ -100,13 +117,13 @@ const Login = () => {
                                 className="w-full px-4 py-2 rounded-lg bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all duration-200"
                                 required
                             />
-                            <button 
+                            <button
                                 type="button"
                                 onClick={(e) => {
-                                e.preventDefault()
-                                settoggle(!toggle)
+                                    e.preventDefault()
+                                    settoggle(!toggle)
 
-                            }} className="absolute right-2 top-9 z-10 p-1">
+                                }} className="absolute right-2 top-9 z-10 p-1">
                                 {toggle ? <IoIosEyeOff className="w-5 h-5 text-gray-300" /> : <IoIosEye className="w-5 h-5 text-gray-300" />}
                             </button>
                         </div>

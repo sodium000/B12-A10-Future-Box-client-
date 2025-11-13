@@ -60,9 +60,9 @@ const Navbars = () => {
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 80 }}
-      className="container mx-auto rounded-2xl backdrop-blur-xl bg-base-100/80 shadow-md sticky top-0 z-50 border-b border-base-200 bg-linear-to-r from-blue-600/80 via-indigo-600/80 to-purple-700/80"
+      className="  container mx-auto rounded-xl backdrop-blur-xl bg-base-100/80 shadow-md sticky top-0 z-50 border-b border-base-200 bg-linear-to-r from-blue-600/80 via-indigo-600/80 to-purple-700/80"
     >
-      <div className="navbar max-w-7xl mx-auto px-3 sm:px-4 md:px-8">
+      <div className="navbar max-h-px  px-10 sm:px-4 md:px-6">
         <div className="navbar-start">
           <div className="dropdown">
             <div
