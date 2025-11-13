@@ -19,6 +19,7 @@ const Login = () => {
     });
 
     const { LogInwithemail, SignByGoogle } = use(AuthContext);
+    const from = location.state?.from?.pathname || location.state || "/";
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,7 +36,7 @@ const Login = () => {
                 icon: "success",
                 draggable: true
             });
-            navigate(`${location.state ? location.state : "/"}`);
+            navigate(from, { replace: true });
         })
             .catch((error) => {
                 if (error.code === 'auth/invalid-credential') {
@@ -67,11 +68,11 @@ const Login = () => {
         SignByGoogle()
             .then((result) => {
                 Swal.fire({
-                    title: "Drag me!",
+                    title: "Login Successfully",
                     icon: "success",
                     draggable: true
                 });
-                navigate('/');
+                navigate(from, { replace: true });
 
             }).catch((error) => {
                 console.log(error);

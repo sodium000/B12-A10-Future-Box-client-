@@ -6,10 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Outlet } from "react-router";
 
 const images = [
-  "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
-  "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
-  "https://images.unsplash.com/photo-1551218808-94e220e084d2",
-  "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+  "https://i.ibb.co/cckQX6z8/hunger-1.png",
+  "https://i.ibb.co/7tJYhJmm/a-child-with-a-cracked-cup-waiting-in-line-at-a-water-distribution-point-in-a-rural-village-photo.jpg",
+  "https://i.ibb.co/DgWF0CwB/ai-generated-poor-kids-standing-in-line-holding-empty-pots-free-photo.jpg",
+  "https://i.ibb.co/B29TntWg/Getty-Images-1952235268.webp",
 ];
 
 const HomeLayout = () => {
@@ -25,9 +25,7 @@ const HomeLayout = () => {
 
   return (
     <>
-      {/* 🌅 HERO SECTION */}
       <div className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] w-full">
-        {/* Background Slider */}
         <AnimatePresence mode="wait">
           <motion.img
             key={index}
@@ -36,7 +34,7 @@ const HomeLayout = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute top-0 left-0 w-full h-full object-cover"
+            className="absolute top-0 left-0 w-full h-full object-fill"
           />
         </AnimatePresence>
 
