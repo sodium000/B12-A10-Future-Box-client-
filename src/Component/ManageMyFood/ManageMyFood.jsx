@@ -17,7 +17,6 @@ export default function FoodTable() {
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // ✅ Fetch all foods for logged-in user
   const fetchFoods = async () => {
     try {
       setLoading(true);

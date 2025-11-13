@@ -112,11 +112,11 @@ export default function FoodTableSimple() {
                       <td className="px-6 py-4">
                         <span
                           className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            food.statues === "Accepting"
-                              ? "bg-green-100 text-green-700"
+                            food.statues === "Accepted"
+                              ? "bg-green-300 text-green-700"
                               : food.statues=== "Pending"
-                              ? "bg-red-100 text-red-700"
-                              : ""
+                              ? "bg-amber-300 text-red-700"
+                              : "bg-red-300 text-red-700"
                           }`}
                         >
                           {food.statues}

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from "react";
@@ -99,8 +100,26 @@ const FoodDetails = () => {
    */
 
 
-   useEffect(() => {
-    const fetchFoodList = async () => {
+  //  useEffect(() => {
+  //   const fetchFoodList = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const response = await fetch(`http://localhost:3000/food/reqlist/${_id}`);
+  //       const data = await response.json();
+  //       setFoodList(data);
+  //     } catch (error) {
+  //       console.error('Error fetching food list:', error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   if (_id) {
+  //     fetchFoodList();
+  //   }
+  // }, [_id]);
+
+      const fetchFoodList = async () => {
       try {
         setLoading(true);
         const response = await fetch(`http://localhost:3000/food/reqlist/${_id}`);
@@ -113,10 +132,13 @@ const FoodDetails = () => {
       }
     };
 
-    if (_id) {
-      fetchFoodList();
-    }
-  }, [_id]);
+      useEffect(() => {
+        if (user?.email) {
+          fetchFoodList();
+        }
+      }, [user?.email]);
+
+    
 
   
 
@@ -132,16 +154,21 @@ const FoodDetails = () => {
   };
 
 
-    const handleAction = (id, action) => {
-      console.log(id)
-    const updated = FoodList.map((r) =>
-      r.id === id ? { ...r, statues: action } : r
-    );
-    setFoodList(updated);
-    const target = FoodList.find((r) => r.id === id);
-    if (target) {
-      setNotification(`${user.displayName}'s request for ${target.foodName} has been ${action}.`);
-      setTimeout(() => setNotification(null), 3000);
+    const handleAction = async (id, action) => {
+       try {
+      const res = await fetch(`http://localhost:3000/food/requpdate/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            statues : action
+        }),
+      });
+      const updated = await res.json();
+      console.log(updated)
+      fetchFoodList()
+    }
+    catch (error) {
+      alert("Update failed.");
     }
   };
 
@@ -310,11 +337,11 @@ const FoodDetails = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {FoodList.map(({ id, Req_Name, foodName, Donor_name, statues,ReqLoaction}) => {
+              {FoodList.map(({ _id, Req_Name, foodName, Donor_name, statues,ReqLoaction}) => {
                 const c = getClasses(statues);
                 const disabled = statues !== "Pending";
                 return (
-                  <tr key={id} className={!disabled ? "hover:bg-gray-50" : ""}>
+                  <tr key={_id} className={!disabled ? "hover:bg-gray-50" : ""}>
                     <td className="px-6 py-4 text-sm font-medium text-gray-900">{Req_Name}</td>
                     <td className="px-6 py-4 text-sm text-gray-500">{foodName}</td>
                     <td className="px-6 py-4 text-sm text-gray-500">{ReqLoaction}</td>
@@ -353,11 +380,11 @@ const FoodDetails = () => {
           </table>
         </div>
         <div className="md:hidden space-y-4">
-          {FoodList.map(({ id, Req_Name, foodName,statues, Donor_name,ReqLoaction }) => {
+          {FoodList.map(({ _id, Req_Name, foodName,statues, Donor_name,ReqLoaction }) => {
             const c = getClasses(statues);
             const disabled = statues !== "Pending";
             return (
-              <div key={id} className="bg-white shadow-xl rounded-xl p-4 border border-gray-200">
+              <div key={_id} className="bg-white shadow-xl rounded-xl p-4 border border-gray-200">
                 <div className="flex justify-between items-center mb-2">
                   <div className="text-lg font-bold text-gray-900"> Requester :<span> {Req_Name}</span></div>
                   <div className={`px-3  py-1 text-sm font-semibold rounded-full ${c.badgeBg} ${c.badgeText}`}>
