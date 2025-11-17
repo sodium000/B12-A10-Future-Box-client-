@@ -12,15 +12,30 @@ const AuthProvider = ({ children }) => {
   const RegWithEmail = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
+  
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (CurrentUser) => {
-      setUser(CurrentUser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log('Auth state change:', currentUser);
+      const Email = {email : currentUser.email}
+      console.log(Email)
+      setUser(currentUser );
+      if (currentUser) {
+        console.log("user Found")
+        fetch('http://localhost:3000/getToken',{
+          method : "POST",
+          headers : {
+            'content-type' : 'application/json'
+          },
+          body : JSON.stringify(Email)
+        }).then(res=>res.json()).then(data=> console.log(data))
+        
+      }
       setloading(false);
     });
     return () => {
-      unsubscribe()
-    }
+      unsubscribe();
+    };
   }, [])
 
   const Logout = () => signOut(auth)

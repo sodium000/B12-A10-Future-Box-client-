@@ -21,10 +21,15 @@ export default function FoodTable() {
     try {
       setLoading(true);
       const res = await fetch(
-        `https://b12-a10-future-box-server-eight.vercel.app/food/myfood?email=${user?.email}`
+        `http://localhost:3000/food/myfood?email=${user?.email}`,{
+          headers : {
+            authorization : `Bearer ${user.accessToken}`
+          }
+        }
       );
       const data = await res.json();
       setFoods(data);
+      console.log(data)
     } catch (error) {
       console.error("Error fetching food:", error);
     } finally {
@@ -63,7 +68,7 @@ export default function FoodTable() {
     if (!selected) return;
     setIsSaving(true);
     try {
-      const res = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/update/${selected._id}`, {
+      const res = await fetch(`http://localhost:3000/food/update/${selected._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -93,7 +98,7 @@ export default function FoodTable() {
 
     setIsDeleting(true);
     try {
-      const res = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/${id}`, {
+      const res = await fetch(`http://localhost:3000/food/${id}`, {
         method: "DELETE",
       });
       const result = await res.json();

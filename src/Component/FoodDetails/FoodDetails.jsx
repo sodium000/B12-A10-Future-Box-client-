@@ -78,7 +78,7 @@ const FoodDetails = () => {
       Req_photoURL: user.photoURL || '',
       statues: "Pending"
     };
-    fetch('https://b12-a10-future-box-server-eight.vercel.app/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(FoodReq) })
+    fetch('http://localhost:3000/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(FoodReq) })
     .then(data=>console.log(data))
     setIsModalOpen(false);
   }
@@ -104,7 +104,7 @@ const FoodDetails = () => {
   //   const fetchFoodList = async () => {
   //     try {
   //       setLoading(true);
-  //       const response = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/reqlist/${_id}`);
+  //       const response = await fetch(`http://localhost:3000/food/reqlist/${_id}`);
   //       const data = await response.json();
   //       setFoodList(data);
   //     } catch (error) {
@@ -122,7 +122,7 @@ const FoodDetails = () => {
       const fetchFoodList = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/reqlist/${_id}`);
+        const response = await fetch(`http://localhost:3000/food/reqlist/${_id}`);
         const data = await response.json();
         setFoodList(data);
       } catch (error) {
@@ -156,7 +156,7 @@ const FoodDetails = () => {
 
     const handleAction = async (id, action) => {
        try {
-      const res = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/requpdate/${id}`, {
+      const res = await fetch(`http://localhost:3000/food/requpdate/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -189,8 +189,8 @@ const FoodDetails = () => {
 
           <div className="flex flex-col gap-6">
             <div className="rounded-2xl p-4 sm:p-6 shadow-xl bg-base-100">
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 break-words">{Food_name}</h1>
-              <p className="text-sm sm:text-base text-base-content/70 break-words">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 wrap-break-word">{Food_name}</h1>
+              <p className="text-sm sm:text-base text-base-content/70 wrap-break-word">
                 {Description}
               </p>
             </div>

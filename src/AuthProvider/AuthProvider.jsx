@@ -1,53 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import AuthContext from '../AuthContext/AuthContext';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 const AuthProvider = ({ children }) => {
-  const [loading, setloading] = useState(true);
+  const [loading,setloading] = useState(true);
   const provider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
 
-
+  const RegWithEmail = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (CurrentUser) => {
-      setUser(CurrentUser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const Email = {email : currentUser.email}
+      setUser(currentUser );
+      if (currentUser) {
+        fetch('http://localhost:3000/getToken',{
+          method : "POST",
+          headers : {
+            'content-type' : 'application/json'
+          },
+          body : JSON.stringify(Email)
+        }).then(res=>res.json()).then(data=> console.log(data.userToken))
+        
+      }
       setloading(false);
     });
     return () => {
-      unsubscribe()
-    }
+      unsubscribe();
+    };
   }, [])
 
-  // google sign in
-  const SignByGoogle = () => signInWithPopup(auth, provider);
+  const Logout = () => signOut(auth)
 
-  // google singOut
+  const Login = (email, password) => signInWithEmailAndPassword(auth, email, password)
 
-  const SignOut = () => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      console.log(error)
-    });
-
-  }
-
-  const SignWithEmail = (email,password) => createUserWithEmailAndPassword(auth,email,password)
-
-  const LogInwithemail = (email,password)=>signInWithEmailAndPassword(auth, email, password)
+  const SignByGoogle = ()=>signInWithPopup(auth, provider);
 
 
   const userInfo = {
     user,
     setUser,
+    RegWithEmail,
+    Logout,
+    Login,
     SignByGoogle,
     loading,
     setloading,
-    SignOut,
-    SignWithEmail,
-    LogInwithemail
   };
 
   return (
@@ -58,4 +61,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
-

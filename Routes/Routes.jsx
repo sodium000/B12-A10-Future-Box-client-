@@ -21,7 +21,7 @@ import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
     children : [
         {
             index : true,
-            loader: ()=> fetch(`https://b12-a10-future-box-server-eight.vercel.app/allfood/sort`),
+            loader: ()=> fetch(`http://localhost:3000/allfood/sort`),
             Component : HomePage
         }
     ]
@@ -54,13 +54,13 @@ import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
   },
   {
     path: "/allfood",
-    loader: ()=> fetch('https://b12-a10-future-box-server-eight.vercel.app/food'),
+    loader: ()=> fetch('http://localhost:3000/food'),
     element: <AllFoodShow></AllFoodShow> ,
   },
   {
     path: "/food/:id",
     loader: ({ params }) =>
-      fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/${params.id}`),
+      fetch(`http://localhost:3000/food/${params.id}`),
     element: (
       <PrivateRoutes>
         <FoodDetails></FoodDetails>

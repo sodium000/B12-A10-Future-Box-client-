@@ -16,7 +16,7 @@ export default function FoodTableSimple() {
     try {
       setLoading(true);
       const res = await fetch(
-        `https://b12-a10-future-box-server-eight.vercel.app/food/request?email=${user.email}`
+        `http://localhost:3000/food/request?email=${user.email}`
       );
       const data = await res.json();
       setFoods(data);

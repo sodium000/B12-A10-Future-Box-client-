@@ -6,8 +6,6 @@ import { IoIosEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
 import { updateProfile } from "firebase/auth";
-import Navbar from '../../NavBar/Navbars'
-import Swal from "sweetalert2";
 
 
 
@@ -30,15 +28,12 @@ const Regiestration = () => {
   const googleLogin = () => {
     SignByGoogle()
       .then((result) => {
-           Swal.fire({
-          title: "Welcome to home page",
-          icon: "success",
-          draggable: true
-        });
+        console.log(result.user)
         navigate('/')
 
       }).catch((error) => {
-        console.log(error)
+        console.log(error);
+        // ...
       });
   };
 
@@ -77,6 +72,7 @@ const Regiestration = () => {
       return
     }
     else {
+      console.log('tonmoy')
       const Email = formData.email
       const Password = formData.password
       const Name = formData.name
@@ -87,41 +83,31 @@ const Regiestration = () => {
           displayName: Name, photoURL: PhotoURL
         }).then(() => {
         }).catch((error) => {
+          console.log(error)
         });
-            Swal.fire({
-          title: "Regestration Done",
-          icon: "success",
-          draggable: true
-        });
+        console.log(user)
         navigate('/');
 
       })
         .catch((error) => {
-          if(error.code === 'auth/email-already-in-use'){
-            Swal.fire({
-          title: "You have already account",
-          icon: "error",
-          draggable: true
-        });
-          }
+          console.log(error)
         });
     }
   };
   return (
-    <div className="bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500">
-      <Navbar></Navbar>
-      <div className="min-h-screen flex items-center justify-center  p-4 sm:p-6">
+    <div>
+      <div className="min-h-screen  flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
         <motion.div
           initial={{ opacity: 0, y: 60, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 3, ease: "easeOut" }}
-          className="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-md border border-white/20"
+          className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl w-full max-w-md border border-white/20"
         >
           <motion.h2
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="text-2xl sm:text-3xl font-bold text-center text-white mb-4 sm:mb-6"
+            className="text-3xl font-bold text-center text-white mb-6"
           >
             Create an Account
           </motion.h2>
@@ -143,7 +129,7 @@ const Regiestration = () => {
                 placeholder="John Doe"
                 className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 transition duration-300"
                 required
-
+                
               />
             </motion.div>
             <motion.div
@@ -183,14 +169,11 @@ const Regiestration = () => {
                 className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 transition duration-300"
                 required
               />
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault()
-                  settoggle(!toggle)
+              <button onClick={(e) => {
+                e.preventDefault()
+                settoggle(!toggle)
 
-                }} className="absolute right-2 top-9 z-10 p-1">
-                {toggle ? <IoIosEyeOff className="w-5 h-5 text-gray-200" /> : <IoIosEye className="w-5 h-5 text-gray-200" />}
+              }} >{toggle ? <IoIosEyeOff className="btn btn-xs border-0 rounded-full  absolute right-1.5 top-8 z-10 bg-linear-to-br from-orange-600 via-purple-600 to-pink-500" /> : <IoIosEye className="btn btn-xs border-0 rounded-full absolute right-1.5 top-8  z-10 bg-linear-to-br from-orange-600 via-purple-600 to-pink-500" />}
               </button>
               {
                 errors.password && <p className="text-red-700 text-sm">{errors.password}</p>
