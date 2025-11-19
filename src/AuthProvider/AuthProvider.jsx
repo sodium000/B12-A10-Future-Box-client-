@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
             'content-type' : 'application/json'
           },
           body : JSON.stringify(Email)
-        }).then(res=>res.json()).then(data=> console.log(data.userToken))
+        }).then(res=>res.json()).then(data=> localStorage.setItem("Token", data.userToken) )
         
       }
       setloading(false);

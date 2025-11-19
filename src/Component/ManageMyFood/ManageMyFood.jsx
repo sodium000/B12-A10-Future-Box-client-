@@ -23,7 +23,7 @@ export default function FoodTable() {
       const res = await fetch(
         `http://localhost:3000/food/myfood?email=${user?.email}`,{
           headers : {
-            authorization : `Bearer ${user.accessToken}`
+            authorization : `Bearer ${localStorage.getItem('Token')}`
           }
         }
       );
