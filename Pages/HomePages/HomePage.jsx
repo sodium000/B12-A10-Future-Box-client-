@@ -2,6 +2,16 @@ import React from 'react';
 import FoodCard from '../../src/FootCard/FoodCard'
 import HowWork from '../../src/Component/HowWork/HowWork';
 import OurMission from '../../src/Component/OurMission/OurMission';
+import Features from '../../src/Component/Features/Features';
+import Services from '../../src/Component/Services/Services';
+import Categories from '../../src/Component/Categories/Categories';
+import Highlights from '../../src/Component/Highlights/Highlights';
+import Statistics from '../../src/Component/Statistics/Statistics';
+import Testimonials from '../../src/Component/Testimonials/Testimonials';
+import Blogs from '../../src/Component/Blogs/Blogs';
+import Newsletter from '../../src/Component/Newsletter/Newsletter';
+import FAQ from '../../src/Component/FAQ/FAQ';
+import CTA from '../../src/Component/CTA/CTA';
 import { Link, useLoaderData } from 'react-router';
 import Footer from '../../src/Footer/Footer';
 import AuthContext from '../../src/AuthContext/AuthContext';
@@ -19,19 +29,28 @@ const HomePage = () => {
                 </div>
             </div>
             <Link to='/allfood'>
-                            <button
-                                className="px-4 mb-10 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-yellow-400 text-yellow-400 sm:text-yellow-600 font-semibold 
-                            rounded-md hover:bg-yellow-50 transition duration-300 text-sm sm:text-base
-                            transform hover:scale-105 active:scale-95"
-                            >
-                                Show All Food 
-                            </button>
-                        </Link>
+                <button
+                    className="px-4 mb-10 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-yellow-400 text-yellow-400 sm:text-yellow-600 font-semibold 
+                    rounded-md hover:bg-yellow-50 transition duration-300 text-sm sm:text-base
+                    transform hover:scale-105 active:scale-95"
+                >
+                    Show All Food 
+                </button>
+            </Link>
         </div>
-            <HowWork></HowWork>
-            <OurMission></OurMission>
-            <Footer></Footer>
-            
+        <Features />
+        <Services />
+        <Categories />
+        <Highlights />
+        <Statistics />
+        <HowWork />
+        <Testimonials />
+        <Blogs />
+        <Newsletter />
+        <FAQ />
+        <CTA />
+        <OurMission />
+        <Footer />
     </div>
     );
 };
