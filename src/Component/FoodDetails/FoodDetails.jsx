@@ -175,7 +175,10 @@ const FoodDetails = () => {
   return (
     <>
       <Navbars></Navbars>
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 my-6 sm:my-8 lg:my-10">
+      <div className="mt-20">
+
+      </div>
+      <section className="mx-auto  max-w-6xl px-4 sm:px-6 lg:px-8 my-6 sm:my-8 lg:my-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           <div className="w-full">
             <div className="rounded-2xl overflow-hidden shadow-xl bg-base-100">
@@ -215,7 +218,7 @@ const FoodDetails = () => {
                     {Email}
                   </p>
                   <p className="text-xs sm:text-sm text-base-content/70 truncate">
-                    {Donor_name}
+                    {Donor_name} <span className="font-bold">(Donor)</span>
                   </p>
                 </div>
               </div>

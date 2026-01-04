@@ -82,7 +82,7 @@ const Navbars = () => {
       className={`fixed top-0 left-0 right-0 w-full z-9999 transition-all duration-500 ${isScrolled ? 'py-2' : 'py-4'}`}
     >
       <div className="container mx-auto px-4 lg:px-6">
-        <div className={`relative flex items-center justify-between px-4 py-2.5 rounded-2xl transition-all duration-300 border border-white/10 ${isScrolled ? 'bg-slate-900/90 backdrop-blur-xl shadow-2xl' : 'bg-white/10 backdrop-blur-md shadow-lg'
+        <div className={`relative flex items-center justify-between px-4 py-2.5 rounded-2xl transition-all duration-300 border border-white/10 ${isScrolled ? 'bg-slate-900/90 backdrop-blur-xl shadow-2xl' : 'bg-black/50 backdrop-blur-md shadow-lg'
           }`}>
 
           <NavLink to="/" className="flex items-center gap-2 group shrink-0">
@@ -104,7 +104,7 @@ const Navbars = () => {
               <span className="loading loading-spinner loading-sm text-yellow-400"></span>
             ) : user ? (
               <div className="flex items-center gap-2 sm:gap-4">
-                <NavLink to="/addfood">
+                <NavLink to="/dashboard">
                   {({ isActive }) => (
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -143,17 +143,6 @@ const Navbars = () => {
                       <p className="text-sm font-bold text-white truncate">{user.displayName}</p>
                       <p className="text-[10px] text-yellow-400/70 uppercase tracking-widest font-black mt-0.5">Verified Donor</p>
                     </div>
-
-                    <li>
-                      <NavLink to="/managemyfood" className={({ isActive }) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
-                        <FiList /> Manage My Foods
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/myfoodrequest" className={({ isActive }) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
-                        <FiHeart /> My Requests
-                      </NavLink>
-                    </li>
 
                     <div className="xl:hidden">
                       <div className="divider my-1 opacity-5"></div>

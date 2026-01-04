@@ -3,12 +3,11 @@ import { createBrowserRouter } from "react-router";
 import HomeLayout from "../Layout/HomeLayout";
 import HomePage from "../Pages/HomePages/HomePage";
 import AuthLayout from "../Layout/AuthLayout";
+import DashboardLayout from "../Layout/DashboardLayout";
 import Login from '../src/Component/Login/Login'
 import Regiestration from '../src/Component/Regiestration/Regiestration'
 import AddFood from '../src/Component/AddFood/AddFood'
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
-import ManageMyFood from '../src/Component/ManageMyFood/ManageMyFood'
-import MyFoodReq from '../src/MyFoodRequest/MyFoodReq'
 import AllFoodShow from "../src/Component/AllFoodShow/AllFoodShow";
 import ErrorPage from "../src/Error/Error";
 import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
@@ -61,12 +60,20 @@ const router = createBrowserRouter([
     element: <PrivateRoutes><AddFood></AddFood></PrivateRoutes>,
   },
   {
+    path: "/dashboard",
+    element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
+  },
+  {
     path: "/managemyfood",
-    element: <PrivateRoutes><ManageMyFood></ManageMyFood></PrivateRoutes>,
+    element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
   },
   {
     path: "/myfoodrequest",
-    element: <PrivateRoutes><MyFoodReq></MyFoodReq></PrivateRoutes>,
+    element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
+  },
+  {
+    path: "/approvals",
+    element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
   },
   {
     path: "/allfood",

@@ -3,11 +3,10 @@
 import React, { use, useEffect, useState } from "react";
 import { FiEdit2, FiRefreshCw, FiSearch } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbars from "../../NavBar/Navbars";
 import AuthContext from "../../AuthContext/AuthContext";
 import { MdDelete } from "react-icons/md";
 
-export default function FoodTable() {
+export default function   FoodTable() {
   const { user } = use(AuthContext);
   const [loading, setLoading] = useState(true);
   const [foods, setFoods] = useState([]);
@@ -119,21 +118,20 @@ export default function FoodTable() {
 
   return (
     <>
-      <Navbars />
       <div className="p-4 sm:p-6 max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
-          <h2 className="text-2xl font-semibold text-gray-800">My Added Foods</h2>
+          <h2 className="text-2xl font-semibold text-white">My Added Foods</h2>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
             <div className="relative w-full sm:w-64">
-              <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
+              <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-white">
                 <FiSearch />
               </span>
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search foods..."
-                className="pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-300 outline-none w-full"
+                className="pl-10 pr-4 py-2 border text-white rounded-lg focus:ring-2 focus:ring-indigo-300 outline-none w-full"
               />
             </div>
 
