@@ -24,7 +24,7 @@ const FoodDonationForm = () => {
             Description : event.target.additionalNote.value,
             FoodImag : event.target.Photo_URL.value
         }
-        fetch('http://localhost:3000/allfood',{
+        fetch('https://b12-a10-future-box-server-eight.vercel.app/allfood',{
             method : 'POST',
             headers : {
                 'content-type' : 'application/json'

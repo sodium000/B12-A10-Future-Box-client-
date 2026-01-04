@@ -5,7 +5,7 @@ import { use, useState } from "react";
 import AuthContext from "../AuthContext/AuthContext";
 import ThemeToggle from "../ThemToggle/ThemToggle";
 import Button from "../Button/LoginButton";
-import { FiLogOut, FiPlusCircle, FiList, FiHeart, FiMenu, FiX, FiHome, FiGrid, FiInfo, FiMapPin, FiBriefcase } from "react-icons/fi";
+import { FiLogOut, FiPlusCircle, FiList, FiHeart, FiMenu, FiX, FiHome, FiGrid, FiInfo, FiMapPin, FiBriefcase, FiUser } from "react-icons/fi";
 import { MdDashboard } from "react-icons/md";
 
 
@@ -143,6 +143,12 @@ const Navbars = () => {
                       <p className="text-sm font-bold text-white truncate">{user.displayName}</p>
                       <p className="text-[10px] text-yellow-400/70 uppercase tracking-widest font-black mt-0.5">Verified Donor</p>
                     </div>
+
+                    <li>
+                      <NavLink to="/profile" className={({ isActive }) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
+                        <FiUser /> My Profile
+                      </NavLink>
+                    </li>
 
                     <div className="xl:hidden">
                       <div className="divider my-1 opacity-5"></div>

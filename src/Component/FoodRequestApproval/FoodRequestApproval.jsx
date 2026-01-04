@@ -23,7 +23,7 @@ export default function FoodRequestApproval() {
     try {
       setLoading(true);
       // First, fetch all foods where the user is the donor
-      const foodsRes = await fetch(`http://localhost:3000/food/myfood?email=${user?.email}`, {
+      const foodsRes = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/myfood?email=${user?.email}`, {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
         }
@@ -39,7 +39,7 @@ export default function FoodRequestApproval() {
       const allRequests = [];
       for (const food of foods) {
         try {
-          const reqRes = await fetch(`http://localhost:3000/food/reqlist/${food._id}`);
+          const reqRes = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/reqlist/${food._id}`);
           const requests = await reqRes.json();
           if (Array.isArray(requests)) {
             allRequests.push(...requests);
@@ -66,7 +66,7 @@ export default function FoodRequestApproval() {
 
   const handleAction = async (id, action) => {
     try {
-      const res = await fetch(`http://localhost:3000/food/requpdate/${id}`, {
+      const res = await fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/requpdate/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

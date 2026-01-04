@@ -130,12 +130,11 @@ const Login = () => {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 type="submit"
-                                className="w-full py-3 bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold rounded-lg cursor-pointer"
+                                className="w-full py-3 bg-linear-to-r from-violet-600 to-pink-600 text-white font-bold rounded-lg cursor-pointer"
                             >
                                 Login
                             </motion.button>
 
-                            {/* Demo Button */}
                             <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}

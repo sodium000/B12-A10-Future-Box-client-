@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser );
       if (currentUser) {
         console.log("user Found")
-        fetch('http://localhost:3000/getToken',{
+        fetch('https://b12-a10-future-box-server-eight.vercel.app/getToken',{
           method : "POST",
           headers : {
             'content-type' : 'application/json'

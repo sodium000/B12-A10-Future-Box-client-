@@ -11,6 +11,7 @@ import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import AllFoodShow from "../src/Component/AllFoodShow/AllFoodShow";
 import ErrorPage from "../src/Error/Error";
 import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
+import Profile from '../src/Component/Profile/Profile'
 import AboutPage from "../Pages/About/AboutPage";
 import CareerPage from "../Pages/Career/CareerPage";
 import LocationsPage from "../Pages/office/LocationsPage";
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch(`http://localhost:3000/allfood/sort`),
+        loader: () => fetch(`https://b12-a10-future-box-server-eight.vercel.app/allfood/sort`),
         Component: HomePage
       },
     ]
@@ -76,14 +77,18 @@ const router = createBrowserRouter([
     element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
   },
   {
+    path: "/profile",
+    element: <PrivateRoutes><Profile></Profile></PrivateRoutes>,
+  },
+  {
     path: "/allfood",
-    loader: () => fetch('http://localhost:3000/food'),
+    loader: () => fetch('https://b12-a10-future-box-server-eight.vercel.app/food'),
     element: <AllFoodShow></AllFoodShow>,
   },
   {
     path: "/food/:id",
     loader: ({ params }) =>
-      fetch(`http://localhost:3000/food/${params.id}`),
+      fetch(`https://b12-a10-future-box-server-eight.vercel.app/food/${params.id}`),
     element: (
       <PrivateRoutes>
         <FoodDetails></FoodDetails>
