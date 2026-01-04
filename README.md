@@ -2,6 +2,9 @@
 
 PlateShare is a modern web application designed to connect food donors with those in need, reducing food waste and helping communities share resources. Built with React and Firebase, PlateShare provides a seamless platform for individuals and organizations to donate surplus food and for recipients to request food assistance.
 
+#Live Link
+https://platshear.firebaseapp.com/
+
 ## 🌟 Features
 
 ### For Donors
@@ -150,15 +153,7 @@ PlateShare uses Firebase Authentication for secure user management. Users can:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is private and proprietary.
-
-## 👥 Authors
-
-Developed as part of Assignment-9
+Contributions are welcome! Please feel free to submit a Pull Reque
 
 ---
 
