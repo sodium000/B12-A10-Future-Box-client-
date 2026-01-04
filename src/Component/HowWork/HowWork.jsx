@@ -39,10 +39,10 @@ const HowWork = () => {
     return (
         <section className=" py-16 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto text-center relative ">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-4 text-transparent bg-clip-text bg-linear-to-r from-violet-600  to-pink-700">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-4 pb-2 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500">
           How it works
         </h2>
-        <p className="text-sm sm:text-base text-violet-600 max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 px-4">
+        <p className="text-sm sm:text-base font-bold max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 px-4">
            Provides a step-by-step guide from topic selection and research to outlining, writing a rough draft, and proofreading.
         </p>
 

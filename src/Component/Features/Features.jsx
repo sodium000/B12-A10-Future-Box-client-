@@ -48,7 +48,7 @@ const Features = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 pb-2 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500">
             Key Features
           </h2>
           <p className="text-lg max-w-2xl mx-auto">

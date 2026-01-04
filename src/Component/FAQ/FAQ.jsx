@@ -39,7 +39,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-16 px-6 ">
+    <section className="py-10 px-6 ">
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -48,10 +48,10 @@ const FAQ = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-pink-700">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 pb-2 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500">
             Frequently Asked Questions
           </h2>
-          <p className="text-gray-900 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-900 font-bold text-lg max-w-2xl mx-auto">
             Find answers to common questions about PlateShare
           </p>
         </motion.div>

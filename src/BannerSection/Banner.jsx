@@ -19,7 +19,7 @@ const Banner = () => {
                         transition={{ duration: 2, ease: "easeOut" }}
                         viewport={{ once: true }}
                     >
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 leading-tight font-sans inline-block px-2 sm:px-4 py-2">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 leading-tight font-sans inline-block px-2 sm:px-4 mt-10 py-2">
                             Waste less, save more, live more
                         </h1>
 
@@ -48,7 +48,7 @@ const Banner = () => {
                         <img
                             src="https://i.ibb.co/99G1BD8s/2017-07-uria-png.webp"
                             alt="Golden hay bales in a sunny field."
-                            className="w-full h-auto object-cover max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] "
+                            className="w-full rounded-xl h-auto object-cover max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] "
                         />
                     </motion.div>
                 </div>

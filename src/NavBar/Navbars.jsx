@@ -1,30 +1,31 @@
 /* eslint-disable no-unused-vars */
-import { NavLink } from "react-router"; 
+import { NavLink } from "react-router";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { use, useState } from "react";
 import AuthContext from "../AuthContext/AuthContext";
 import ThemeToggle from "../ThemToggle/ThemToggle";
 import Button from "../Button/LoginButton";
 import { FiLogOut, FiPlusCircle, FiList, FiHeart, FiMenu, FiX, FiHome, FiGrid, FiInfo, FiMapPin, FiBriefcase } from "react-icons/fi";
+import { MdDashboard } from "react-icons/md";
+
 
 const Navbars = () => {
-  const { user, loading, SignOut } = use(AuthContext);
+  const { user, loading,Logout } = use(AuthContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 20);
   });
 
-  const linkStyles = ({ isActive }) => 
-    `relative flex items-center gap-2 px-3 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
-      isActive 
-        ? "text-yellow-400 bg-white/10 shadow-[inset_0_0_10px_rgba(250,204,21,0.1)]" 
-        : "text-white/70 hover:text-white hover:bg-white/5"
+  const linkStyles = ({ isActive }) =>
+    `relative flex items-center gap-2 px-3 py-2 rounded-full font-medium transition-all duration-300 text-sm ${isActive
+      ? "text-yellow-400 bg-white/10 shadow-[inset_0_0_10px_rgba(250,204,21,0.1)]"
+      : "text-white/70 hover:text-white hover:bg-white/5"
     }`;
 
-  // Shared Routes (Visible to everyone)
   const publicLinks = (
     <>
       <li>
@@ -59,18 +60,16 @@ const Navbars = () => {
       </li>
     </>
   );
-
-  // Extra Routes (Visible to everyone - Career & Location)
   const extraLinks = (
     <>
       <li>
         <NavLink to="/location" className={linkStyles} onClick={() => setIsMobileMenuOpen(false)}>
-           <FiMapPin /> <span>Office</span>
+          <FiMapPin /> <span>Office</span>
         </NavLink>
       </li>
       <li>
         <NavLink to="/career" className={linkStyles} onClick={() => setIsMobileMenuOpen(false)}>
-           <FiBriefcase /> <span>Career</span>
+          <FiBriefcase /> <span>Career</span>
         </NavLink>
       </li>
     </>
@@ -83,11 +82,9 @@ const Navbars = () => {
       className={`fixed top-0 left-0 right-0 w-full z-9999 transition-all duration-500 ${isScrolled ? 'py-2' : 'py-4'}`}
     >
       <div className="container mx-auto px-4 lg:px-6">
-        <div className={`relative flex items-center justify-between px-4 py-2.5 rounded-2xl transition-all duration-300 border border-white/10 ${
-          isScrolled ? 'bg-slate-900/90 backdrop-blur-xl shadow-2xl' : 'bg-white/10 backdrop-blur-md shadow-lg'
-        }`}>
-          
-          {/* Logo Section */}
+        <div className={`relative flex items-center justify-between px-4 py-2.5 rounded-2xl transition-all duration-300 border border-white/10 ${isScrolled ? 'bg-slate-900/90 backdrop-blur-xl shadow-2xl' : 'bg-white/10 backdrop-blur-md shadow-lg'
+          }`}>
+
           <NavLink to="/" className="flex items-center gap-2 group shrink-0">
             <motion.div whileHover={{ rotate: 15 }} className="w-9 h-9 bg-linear-to-tr from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
               <img src="/Screenshot_4.png" className="w-7 h-7 rounded-md object-cover" alt="L" />
@@ -97,27 +94,37 @@ const Navbars = () => {
             </span>
           </NavLink>
 
-          {/* Desktop Navigation */}
           <ul className="hidden xl:flex items-center gap-1 list-none">
             {publicLinks}
             {extraLinks}
           </ul>
 
-          {/* Action Area */}
           <div className="flex items-center gap-3">
             {loading ? (
               <span className="loading loading-spinner loading-sm text-yellow-400"></span>
             ) : user ? (
               <div className="flex items-center gap-2 sm:gap-4">
-                {/* Action Button: Add Food */}
                 <NavLink to="/addfood">
                   {({ isActive }) => (
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs transition-all shadow-lg ${
-                        isActive ? "bg-white text-orange-600" : "bg-linear-to-r from-yellow-400 to-orange-500 text-slate-900"
-                      }`}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs transition-all shadow-lg ${isActive ? "bg-white text-orange-600" : "bg-linear-to-r from-yellow-400 to-orange-500 text-slate-900"
+                        }`}
+                    >
+                      <MdDashboard  className="text-sm" />
+                      <span className="hidden sm:inline">Dashboard</span>
+                    </motion.button>
+                  )}
+                </NavLink>
+
+                <NavLink to="/addfood">
+                  {({ isActive }) => (
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs transition-all shadow-lg ${isActive ? "bg-white text-orange-600" : "bg-linear-to-r from-yellow-400 to-orange-500 text-slate-900"
+                        }`}
                     >
                       <FiPlusCircle className="text-sm" />
                       <span className="hidden sm:inline">Add Food</span>
@@ -125,7 +132,6 @@ const Navbars = () => {
                   )}
                 </NavLink>
 
-                {/* Profile Dropdown */}
                 <div className="dropdown dropdown-end">
                   <div tabIndex={0} role="button" className="p-0.5 rounded-full bg-linear-to-tr from-yellow-400 to-orange-500 hover:scale-105 transition-transform">
                     <div className="w-9 h-9 rounded-full border-2 border-slate-900 overflow-hidden">
@@ -137,22 +143,21 @@ const Navbars = () => {
                       <p className="text-sm font-bold text-white truncate">{user.displayName}</p>
                       <p className="text-[10px] text-yellow-400/70 uppercase tracking-widest font-black mt-0.5">Verified Donor</p>
                     </div>
-                    
-                    {/* Logged in Specific Routes (Min 5 routes combined in UI) */}
+
                     <li>
-                      <NavLink to="/managemyfood" className={({isActive}) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
+                      <NavLink to="/managemyfood" className={({ isActive }) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
                         <FiList /> Manage My Foods
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/myfoodrequest" className={({isActive}) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
+                      <NavLink to="/myfoodrequest" className={({ isActive }) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
                         <FiHeart /> My Requests
                       </NavLink>
                     </li>
 
-                    <div className="xl:hidden"> {/* Show extra links in dropdown for mobile/small desktop */}
-                       <div className="divider my-1 opacity-5"></div>
-                       {extraLinks}
+                    <div className="xl:hidden">
+                      <div className="divider my-1 opacity-5"></div>
+                      {extraLinks}
                     </div>
 
                     <div className="divider my-1 opacity-5"></div>
@@ -161,7 +166,7 @@ const Navbars = () => {
                       <ThemeToggle />
                     </li>
                     <li>
-                      <button onClick={SignOut} className="flex items-center gap-3 w-full px-4 py-2.5 text-red-400 hover:bg-red-500/10 rounded-lg text-sm mt-1 transition-colors">
+                      <button onClick={Logout} className="flex items-center gap-3 w-full px-4 py-2.5 text-red-400 hover:bg-red-500/10 rounded-lg text-sm mt-1 transition-colors">
                         <FiLogOut /> Sign Out
                       </button>
                     </li>
@@ -170,12 +175,11 @@ const Navbars = () => {
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                 <div className="hidden md:block"><ThemeToggle /></div>
-                 <Button />
+                <div className="hidden md:block"><ThemeToggle /></div>
+                <Button />
               </div>
             )}
 
-            {/* Mobile Toggle */}
             <button className="xl:hidden p-2 text-white bg-white/5 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
             </button>
@@ -183,7 +187,6 @@ const Navbars = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -197,9 +200,9 @@ const Navbars = () => {
                 {publicLinks}
                 {extraLinks}
                 {!user && (
-                    <li className="pt-2 border-t border-white/5">
-                        <NavLink to="/auth/regiestration" className={linkStyles}>Registration</NavLink>
-                    </li>
+                  <li className="pt-2 border-t border-white/5">
+                    <NavLink to="/auth/regiestration" className={linkStyles}>Registration</NavLink>
+                  </li>
                 )}
               </ul>
             </div>

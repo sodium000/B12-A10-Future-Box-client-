@@ -25,7 +25,7 @@ const HomeLayout = () => {
 
   return (
     <>
-      <div className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] w-full">
+      <div className="relative md:min-h-[30vh] sm:min-h-[50vh] lg:min-h-[60vh] w-full">
         <AnimatePresence mode="wait">
           <motion.img
             key={index}
@@ -37,16 +37,14 @@ const HomeLayout = () => {
             className="absolute top-0 left-0 w-full h-full object-fill"
           />
         </AnimatePresence>
-
         <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/20 to-black/80" />
-
+          <Navber/>
         <div className="relative z-10">
-          <Navber />
           <Banner />
         </div>
       </div>
 
-      <div className="relative bg-base-100   text-center z-20">
+      <div className="relative bg-base-100 text-center z-20">
         <Outlet></Outlet>
       </div>
     </>

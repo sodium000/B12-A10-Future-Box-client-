@@ -12,50 +12,66 @@ import MyFoodReq from '../src/MyFoodRequest/MyFoodReq'
 import AllFoodShow from "../src/Component/AllFoodShow/AllFoodShow";
 import ErrorPage from "../src/Error/Error";
 import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
+import AboutPage from "../Pages/About/AboutPage";
+import CareerPage from "../Pages/Career/CareerPage";
+import LocationsPage from "../Pages/office/LocationsPage";
 
 
- const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     Component: HomeLayout,
-    children : [
-        {
-            index : true,
-            loader: ()=> fetch(`http://localhost:3000/allfood/sort`),
-            Component : HomePage
-        }
+    children: [
+      {
+        index: true,
+        loader: () => fetch(`http://localhost:3000/allfood/sort`),
+        Component: HomePage
+      },
     ]
+  },
+
+  {
+    path: "about",
+    Component: AboutPage
+  },
+  {
+    path: "career",
+    Component: CareerPage
+  },
+  {
+    path: "location",
+    Component: LocationsPage
   },
   {
     path: "/auth",
     Component: AuthLayout,
-    children : [
-        {
-            path : "login",
-            element : <Login></Login>
-        },
-        {
-            path : "regiestration",
-            Component : Regiestration
-        }
+    children: [
+      {
+        path: "login",
+        element: <Login></Login>
+      },
+      {
+        path: "regiestration",
+        Component: Regiestration
+      }
     ]
   },
   {
     path: "/addfood",
-    element:  <PrivateRoutes><AddFood></AddFood></PrivateRoutes> ,
+    element: <PrivateRoutes><AddFood></AddFood></PrivateRoutes>,
   },
   {
     path: "/managemyfood",
-    element:  <PrivateRoutes><ManageMyFood></ManageMyFood></PrivateRoutes> ,
+    element: <PrivateRoutes><ManageMyFood></ManageMyFood></PrivateRoutes>,
   },
   {
     path: "/myfoodrequest",
-    element:  <PrivateRoutes><MyFoodReq></MyFoodReq></PrivateRoutes> ,
+    element: <PrivateRoutes><MyFoodReq></MyFoodReq></PrivateRoutes>,
   },
   {
     path: "/allfood",
-    loader: ()=> fetch('http://localhost:3000/food'),
-    element: <AllFoodShow></AllFoodShow> ,
+    loader: () => fetch('http://localhost:3000/food'),
+    element: <AllFoodShow></AllFoodShow>,
   },
   {
     path: "/food/:id",
@@ -69,9 +85,9 @@ import FoodDetails from '../src/Component/FoodDetails/FoodDetails'
   },
   {
     path: '/*',
-    element: <ErrorPage></ErrorPage> ,
+    element: <ErrorPage></ErrorPage>,
   },
- 
+
 ]);
 
- export default router
+export default router

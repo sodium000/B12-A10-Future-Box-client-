@@ -18,7 +18,7 @@ const Login = () => {
         password: "",
     });
 
-    const { LogInwithemail, SignByGoogle } = use(AuthContext);
+    const { Login, SignByGoogle } = use(AuthContext);
     const from = location.state?.from?.pathname || location.state || "/";
 
     const handleChange = (e) => {
@@ -29,7 +29,7 @@ const Login = () => {
         e.preventDefault();
         const Email = formData.email
         const Password = formData.password
-        LogInwithemail(Email, Password).then((userCredential) => {
+        Login(Email, Password).then((userCredential) => {
             const user = userCredential.user;
             Swal.fire({
                 title: "Welcome to home page ",
@@ -46,7 +46,7 @@ const Login = () => {
                         draggable: true
                     });
                 }
-                   if (error.code === "auth/missing-password") {
+                if (error.code === "auth/missing-password") {
                     Swal.fire({
                         title: "Please Input Password",
                         icon: "error",

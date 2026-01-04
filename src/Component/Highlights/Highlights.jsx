@@ -24,10 +24,10 @@ const Highlights = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-pink-700">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 pb-2 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500">
               Why Choose PlateShare?
             </h2>
-            <p className=" text-lg mb-8 leading-relaxed">
+            <p className=" font-bold text-lg mb-8 leading-relaxed">
               PlateShare is more than just a food sharing platform. It's a movement towards zero food waste and stronger communities. Join thousands of users making a difference every day.
             </p>
             <div className="space-y-4">

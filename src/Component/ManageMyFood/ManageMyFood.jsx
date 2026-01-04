@@ -21,11 +21,11 @@ export default function FoodTable() {
     try {
       setLoading(true);
       const res = await fetch(
-        `http://localhost:3000/food/myfood?email=${user?.email}`,{
-          headers : {
-            authorization : `Bearer ${localStorage.getItem('Token')}`
-          }
+        `http://localhost:3000/food/myfood?email=${user?.email}`, {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
         }
+      }
       );
       const data = await res.json();
       setFoods(data);
@@ -43,7 +43,7 @@ export default function FoodTable() {
     }
   }, [user?.email]);
 
-  const filtered = foods.filter((f) =>
+  const filtered = (Array.isArray(foods) ? foods : []).filter((f) =>
     f.Food_name?.toLowerCase().includes(query.trim().toLowerCase())
   );
 

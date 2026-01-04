@@ -6,6 +6,7 @@ import { IoIosEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
 import { updateProfile } from "firebase/auth";
+import Navbars from "../../NavBar/Navbars";
 
 
 
@@ -19,7 +20,7 @@ const Regiestration = () => {
     Photo_Url: "",
   });
 
-  const { SignByGoogle, SignWithEmail } = use(AuthContext);
+  const { SignByGoogle, RegWithEmail } = use(AuthContext);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +29,6 @@ const Regiestration = () => {
   const googleLogin = () => {
     SignByGoogle()
       .then((result) => {
-        console.log(result.user)
         navigate('/')
 
       }).catch((error) => {
@@ -77,7 +77,7 @@ const Regiestration = () => {
       const Password = formData.password
       const Name = formData.name
       const PhotoURL = formData.Photo_Url
-      SignWithEmail(Email, Password).then((userCredential) => {
+      RegWithEmail(Email, Password).then((userCredential) => {
         const user = userCredential.user;
         updateProfile(user, {
           displayName: Name, photoURL: PhotoURL
@@ -96,6 +96,7 @@ const Regiestration = () => {
   };
   return (
     <div>
+      <Navbars></Navbars>
       <div className="min-h-screen  flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
         <motion.div
           initial={{ opacity: 0, y: 60, scale: 0.9 }}

@@ -7,7 +7,7 @@ import { FaHandHoldingHeart, FaArrowRight } from 'react-icons/fa';
 
 const CTA = () => {
   return (
-    <section className="py-16 px-6 ">
+    <section className="py-10 px-6 ">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -15,17 +15,18 @@ const CTA = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="flex justify-center mb-6">
-            <div className="bg-white p-4 rounded-full">
+          
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 pb-2 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500">
+            Ready to Make a Difference?
+          </h2>
+          <p className=" text-lg font-bold md:text-xl mb-2 max-w-2xl mx-auto">
+            Join thousands of community members fighting food waste and hunger. Start sharing or requesting food today!
+          </p>
+          <div className="flex justify-center mb-2">
+            <div className=" p-4 rounded-full">
               <FaHandHoldingHeart className="text-5xl text-orange-500 rounded-full ring-2" />
             </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold  mb-4">
-            Ready to Make a Difference?
-          </h2>
-          <p className=" text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            Join thousands of community members fighting food waste and hunger. Start sharing or requesting food today!
-          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/addfood">
               <motion.button

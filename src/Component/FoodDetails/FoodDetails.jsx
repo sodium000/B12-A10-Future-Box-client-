@@ -155,7 +155,7 @@ const FoodDetails = () => {
 
 
     const handleAction = async (id, action) => {
-       try {
+      try {
       const res = await fetch(`http://localhost:3000/food/requpdate/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
