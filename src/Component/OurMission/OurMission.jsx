@@ -3,12 +3,12 @@ import { FaArrowRight } from 'react-icons/fa';
 
 const BusinessLandingPage = () => {
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-300 via-purple-100 to-purple-300 flex items-center justify-center p-8">
+    <div className="min-h-screen  flex items-center justify-center p-8">
       <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl p-8 md:p-12">
         <header className="flex justify-between items-center mb-16">
           <div className="flex items-center gap-2">
              <img src="/Screenshot_4.png" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full sm:ring-offset-2" alt="" />
-                <span className="text-lg sm:text-xl md:text-2xl font-bold underline">Plates</span>
+                <span className="text-lg sm:text-xl md:text-2xl dark:text-black font-bold underline">Plates</span>
              <span className=" italic text-fuchsia-800 text-lg sm:text-xl md:text-2xl font-bold">Share</span>
           </div>
 

@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
-
-import { Link } from "react-router";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { use } from "react";
-import { useState } from "react";
+import { NavLink } from "react-router"; 
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { use, useState } from "react";
 import AuthContext from "../AuthContext/AuthContext";
 import ThemeToggle from "../ThemToggle/ThemToggle";
 import Button from "../Button/LoginButton";
-import { FiLogOut, FiPlusCircle, FiList, FiHeart, FiMenu, FiX } from "react-icons/fi";
+import { FiLogOut, FiPlusCircle, FiList, FiHeart, FiMenu, FiX, FiHome, FiGrid, FiInfo, FiMapPin, FiBriefcase } from "react-icons/fi";
 
 const Navbars = () => {
   const { user, loading, SignOut } = use(AuthContext);
@@ -16,249 +14,198 @@ const Navbars = () => {
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 10);
+    setIsScrolled(latest > 20);
   });
 
-  const navLinks = (
+  const linkStyles = ({ isActive }) => 
+    `relative flex items-center gap-2 px-3 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+      isActive 
+        ? "text-yellow-400 bg-white/10 shadow-[inset_0_0_10px_rgba(250,204,21,0.1)]" 
+        : "text-white/70 hover:text-white hover:bg-white/5"
+    }`;
+
+  // Shared Routes (Visible to everyone)
+  const publicLinks = (
     <>
       <li>
-        <Link 
-          to="/" 
-          className="relative px-3 py-2 rounded-lg font-medium text-white/90 hover:text-white transition-all duration-300 hover:bg-white/10 group"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <span className="relative z-10">Home</span>
-          <span className="absolute inset-0 bg-linear-to-r from-yellow-400/20 to-orange-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        </Link>
+        <NavLink to="/" className={linkStyles} onClick={() => setIsMobileMenuOpen(false)}>
+          {({ isActive }) => (
+            <>
+              <FiHome /> <span>Home</span>
+              {isActive && <motion.div layoutId="activeNav" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-yellow-400 shadow-[0_0_8px_#facc15]" />}
+            </>
+          )}
+        </NavLink>
       </li>
       <li>
-        <Link 
-          to="/allfood" 
-          className="relative px-3 py-2 rounded-lg font-medium text-white/90 hover:text-white transition-all duration-300 hover:bg-white/10 group"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <span className="relative z-10">Available Foods</span>
-          <span className="absolute inset-0 bg-linear-to-r from-yellow-400/20 to-orange-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        </Link>
+        <NavLink to="/allfood" className={linkStyles} onClick={() => setIsMobileMenuOpen(false)}>
+          {({ isActive }) => (
+            <>
+              <FiGrid /> <span>Available Foods</span>
+              {isActive && <motion.div layoutId="activeNav" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-yellow-400 shadow-[0_0_8px_#facc15]" />}
+            </>
+          )}
+        </NavLink>
       </li>
-      {!user && (
-        <li>
-          <Link 
-            to="/auth/regiestration" 
-            className="relative px-3 py-2 rounded-lg font-medium text-white/90 hover:text-white transition-all duration-300 hover:bg-white/10 group"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <span className="relative z-10">Registration</span>
-            <span className="absolute inset-0 bg-linear-to-r from-yellow-400/20 to-orange-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-          </Link>
-        </li>
-      )}
+      <li>
+        <NavLink to="/about" className={linkStyles} onClick={() => setIsMobileMenuOpen(false)}>
+          {({ isActive }) => (
+            <>
+              <FiInfo /> <span>About</span>
+              {isActive && <motion.div layoutId="activeNav" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-yellow-400 shadow-[0_0_8px_#facc15]" />}
+            </>
+          )}
+        </NavLink>
+      </li>
+    </>
+  );
 
-      {user && (
-        <>
-          <li>
-            <Link 
-              to="/addfood" 
-              className="relative px-3 py-2 rounded-lg font-medium text-white/90 hover:text-white transition-all duration-300 hover:bg-white/10 group flex items-center gap-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <FiPlusCircle className="relative z-10" />
-              <span className="relative z-10">Add Food</span>
-              <span className="absolute inset-0 bg-linear-to-r from-yellow-400/20 to-orange-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </Link>
-          </li>
-          <li>
-            <Link 
-              to="/managemyfood" 
-              className="relative px-3 py-2 rounded-lg font-medium text-white/90 hover:text-white transition-all duration-300 hover:bg-white/10 group flex items-center gap-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <FiList className="relative z-10" />
-              <span className="relative z-10">Manage My Food</span>
-              <span className="absolute inset-0 bg-linear-to-r from-yellow-400/20 to-orange-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </Link>
-          </li>
-          <li>
-            <Link 
-              to="/myfoodrequest" 
-              className="relative px-3 py-2 rounded-lg font-medium text-white/90 hover:text-white transition-all duration-300 hover:bg-white/10 group flex items-center gap-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <FiHeart className="relative z-10" />
-              <span className="relative z-10">My Requests</span>
-              <span className="absolute inset-0 bg-linear-to-r from-yellow-400/20 to-orange-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </Link>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                SignOut();
-                setIsMobileMenuOpen(false);
-              }}
-              className="relative px-3 py-2 rounded-lg font-medium text-red-300 hover:text-red-100 transition-all duration-300 hover:bg-red-500/20 group flex items-center gap-2 w-full"
-            >
-              <FiLogOut className="relative z-10" />
-              <span className="relative z-10">Logout</span>
-              <span className="absolute inset-0 bg-red-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </button>
-          </li>
-        </>
-      )}
+  // Extra Routes (Visible to everyone - Career & Location)
+  const extraLinks = (
+    <>
+      <li>
+        <NavLink to="/location" className={linkStyles} onClick={() => setIsMobileMenuOpen(false)}>
+           <FiMapPin /> <span>Office</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/career" className={linkStyles} onClick={() => setIsMobileMenuOpen(false)}>
+           <FiBriefcase /> <span>Career</span>
+        </NavLink>
+      </li>
     </>
   );
 
   return (
     <motion.div
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      className={`fixed top-0 left-0 right-0 w-full z-9999 transition-all duration-300 ${
-        isScrolled ? 'shadow-2xl shadow-purple-500/20' : 'shadow-lg'
-      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 w-full z-9999 transition-all duration-500 ${isScrolled ? 'py-2' : 'py-4'}`}
     >
-      <div className={`relative w-full transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-linear-to-r from-blue-600/95 via-indigo-600/95 to-purple-700/95 backdrop-blur-xl' 
-          : 'bg-linear-to-r from-blue-600/90 via-indigo-600/90 to-purple-700/90 backdrop-blur-lg'
-      } border-b border-white/10`}>
-        {/* Animated background gradient overlay */}
-        <div className="absolute inset-0 bg-linear-to-r from-yellow-400/5 via-orange-500/5 to-pink-500/5 animate-pulse"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="navbar min-h-[70px] py-2">
-            {/* Mobile Menu Button */}
-            <div className="navbar-start">
-              <div className="dropdown lg:hidden">
-                <button
-                  tabIndex={0}
-                  role="button"
-                  className="btn btn-ghost text-white hover:bg-white/20 transition-all duration-300 rounded-lg p-2"
-                  aria-label="Menu"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                  {isMobileMenuOpen ? (
-                    <FiX className="h-6 w-6" />
-                  ) : (
-                    <FiMenu className="h-6 w-6" />
-                  )}
-                </button>
-                {isMobileMenuOpen && (
-                  <motion.ul
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.2 }}
-                    tabIndex={0}
-                    className="menu menu-sm dropdown-content mt-3 z-10000 p-4 shadow-2xl bg-linear-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-2xl w-64 border border-white/10 space-y-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {navLinks}
-                  </motion.ul>
-                )}
-              </div>
+      <div className="container mx-auto px-4 lg:px-6">
+        <div className={`relative flex items-center justify-between px-4 py-2.5 rounded-2xl transition-all duration-300 border border-white/10 ${
+          isScrolled ? 'bg-slate-900/90 backdrop-blur-xl shadow-2xl' : 'bg-white/10 backdrop-blur-md shadow-lg'
+        }`}>
+          
+          {/* Logo Section */}
+          <NavLink to="/" className="flex items-center gap-2 group shrink-0">
+            <motion.div whileHover={{ rotate: 15 }} className="w-9 h-9 bg-linear-to-tr from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
+              <img src="/Screenshot_4.png" className="w-7 h-7 rounded-md object-cover" alt="L" />
+            </motion.div>
+            <span className="text-lg font-bold text-white tracking-tight hidden md:block">
+              Plates<span className="text-yellow-400">Share</span>
+            </span>
+          </NavLink>
 
-              {/* Logo */}
-              <Link to="/" className="flex items-center gap-2 sm:gap-3">
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-1 sm:gap-2 cursor-pointer group"
-                >
-                  <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white drop-shadow-lg group-hover:text-yellow-300 transition-colors duration-300">
-                    Plates
-                  </span>
-                  <motion.img 
-                    src="/Screenshot_4.png" 
-                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full ring-2 ring-yellow-400/50 ring-offset-2 ring-offset-transparent group-hover:ring-yellow-400 transition-all duration-300"
-                    alt="PlateShare Logo"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                  <span className="text-xl sm:text-2xl md:text-3xl font-bold italic text-transparent bg-clip-text bg-linear-to-r from-yellow-300 to-orange-400 drop-shadow-lg group-hover:from-yellow-200 group-hover:to-orange-300 transition-all duration-300">
-                    Share
-                  </span>
-                </motion.div>
-              </Link>
-            </div>
+          {/* Desktop Navigation */}
+          <ul className="hidden xl:flex items-center gap-1 list-none">
+            {publicLinks}
+            {extraLinks}
+          </ul>
 
-            {/* Desktop Navigation */}
-            <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal gap-1 px-1">
-                {navLinks}
-              </ul>
-            </div>
-
-            {/* Right Side Actions */}
-            <div className="navbar-end flex items-center gap-2 sm:gap-3">
-              {/* Theme Toggle */}
-              <div className="hidden sm:block">
-                <div className="p-2 rounded-lg hover:bg-white/10 transition-all duration-300">
-                  <ThemeToggle />
-                </div>
-              </div>
-
-              {loading ? (
-                <div className="flex items-center justify-center p-2">
-                  <span className="loading loading-spinner loading-sm text-yellow-400"></span>
-                </div>
-              ) : (
-                <>
-                  {!user && (
-                    <motion.div
+          {/* Action Area */}
+          <div className="flex items-center gap-3">
+            {loading ? (
+              <span className="loading loading-spinner loading-sm text-yellow-400"></span>
+            ) : user ? (
+              <div className="flex items-center gap-2 sm:gap-4">
+                {/* Action Button: Add Food */}
+                <NavLink to="/addfood">
+                  {({ isActive }) => (
+                    <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="scale-90 sm:scale-100"
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs transition-all shadow-lg ${
+                        isActive ? "bg-white text-orange-600" : "bg-linear-to-r from-yellow-400 to-orange-500 text-slate-900"
+                      }`}
                     >
-                      <Button />
-                    </motion.div>
+                      <FiPlusCircle className="text-sm" />
+                      <span className="hidden sm:inline">Add Food</span>
+                    </motion.button>
                   )}
+                </NavLink>
 
-                  {user && (
-                    <div className="dropdown dropdown-end">
-                      <motion.div
-                        tabIndex={0}
-                        role="button"
-                        className="btn btn-ghost avatar p-1 rounded-full hover:ring-2 hover:ring-yellow-400/50 transition-all duration-300"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-2 ring-yellow-400/50 ring-offset-2 ring-offset-transparent overflow-hidden">
-                          <img
-                            alt="user avatar"
-                            src={user.photoURL || "https://i.ibb.co/2kR7t7t/default-avatar.png"}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </motion.div>
-
-                      <motion.ul
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content mt-3 z-10000 p-4 shadow-2xl bg-linear-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-2xl w-64 border border-white/10 space-y-2"
-                      >
-                        <li className="text-center mb-3 pb-3 border-b border-white/10">
-                          <p className="font-semibold text-base text-white truncate">
-                            {user.displayName || "Anonymous"}
-                          </p>
-                          <p className="text-xs text-gray-400 truncate mt-1">{user.email}</p>
-                        </li>
-                        <li className="sm:hidden">
-                          <div className="p-2">
-                            <ThemeToggle />
-                          </div>
-                        </li>
-                        <div className="divider my-2 opacity-20"></div>
-                        {navLinks}
-                      </motion.ul>
+                {/* Profile Dropdown */}
+                <div className="dropdown dropdown-end">
+                  <div tabIndex={0} role="button" className="p-0.5 rounded-full bg-linear-to-tr from-yellow-400 to-orange-500 hover:scale-105 transition-transform">
+                    <div className="w-9 h-9 rounded-full border-2 border-slate-900 overflow-hidden">
+                      <img src={user.photoURL || "https://i.ibb.co/2kR7t7t/default-avatar.png"} alt="User" />
                     </div>
-                  )}
-                </>
-              )}
-            </div>
+                  </div>
+                  <ul tabIndex={0} className="dropdown-content mt-4 z-100 p-2 shadow-2xl bg-slate-900 border border-white/10 rounded-2xl w-64 backdrop-blur-2xl">
+                    <div className="px-4 py-3 border-b border-white/5 mb-2">
+                      <p className="text-sm font-bold text-white truncate">{user.displayName}</p>
+                      <p className="text-[10px] text-yellow-400/70 uppercase tracking-widest font-black mt-0.5">Verified Donor</p>
+                    </div>
+                    
+                    {/* Logged in Specific Routes (Min 5 routes combined in UI) */}
+                    <li>
+                      <NavLink to="/managemyfood" className={({isActive}) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
+                        <FiList /> Manage My Foods
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/myfoodrequest" className={({isActive}) => `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive ? "bg-yellow-400/10 text-yellow-400" : "text-white/70 hover:bg-white/5"}`}>
+                        <FiHeart /> My Requests
+                      </NavLink>
+                    </li>
+
+                    <div className="xl:hidden"> {/* Show extra links in dropdown for mobile/small desktop */}
+                       <div className="divider my-1 opacity-5"></div>
+                       {extraLinks}
+                    </div>
+
+                    <div className="divider my-1 opacity-5"></div>
+                    <li className="px-4 py-2 flex justify-between items-center text-xs text-white/50">
+                      <span>Dark Mode</span>
+                      <ThemeToggle />
+                    </li>
+                    <li>
+                      <button onClick={SignOut} className="flex items-center gap-3 w-full px-4 py-2.5 text-red-400 hover:bg-red-500/10 rounded-lg text-sm mt-1 transition-colors">
+                        <FiLogOut /> Sign Out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                 <div className="hidden md:block"><ThemeToggle /></div>
+                 <Button />
+              </div>
+            )}
+
+            {/* Mobile Toggle */}
+            <button className="xl:hidden p-2 text-white bg-white/5 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="xl:hidden px-4 mt-2"
+          >
+            <div className="bg-slate-900/95 border border-white/10 rounded-2xl p-4 shadow-2xl backdrop-blur-xl">
+              <ul className="flex flex-col gap-2 list-none">
+                {publicLinks}
+                {extraLinks}
+                {!user && (
+                    <li className="pt-2 border-t border-white/5">
+                        <NavLink to="/auth/regiestration" className={linkStyles}>Registration</NavLink>
+                    </li>
+                )}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

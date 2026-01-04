@@ -4,7 +4,6 @@ import HowWork from '../../src/Component/HowWork/HowWork';
 import OurMission from '../../src/Component/OurMission/OurMission';
 import Features from '../../src/Component/Features/Features';
 import Services from '../../src/Component/Services/Services';
-import Categories from '../../src/Component/Categories/Categories';
 import Highlights from '../../src/Component/Highlights/Highlights';
 import Statistics from '../../src/Component/Statistics/Statistics';
 import Testimonials from '../../src/Component/Testimonials/Testimonials';
@@ -14,13 +13,12 @@ import FAQ from '../../src/Component/FAQ/FAQ';
 import CTA from '../../src/Component/CTA/CTA';
 import { Link, useLoaderData } from 'react-router';
 import Footer from '../../src/Footer/Footer';
-import AuthContext from '../../src/AuthContext/AuthContext';
 
 const HomePage = () => {
     const AllFood = useLoaderData();
     return (
     <div className=''>
-        <div className='bg-[url(/abstract-textured-backgound.jpg)] pt-10 bg-cover bg-center bg-no-repeat '>
+        <div className='pt-10 '>
             <div className='container mx-auto py-4 sm:py-6 md:py-8'>
                 <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center px-2 sm:px-4">
                     {
@@ -40,7 +38,6 @@ const HomePage = () => {
         </div>
         <Features />
         <Services />
-        <Categories />
         <Highlights />
         <Statistics />
         <HowWork />

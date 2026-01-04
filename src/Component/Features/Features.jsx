@@ -39,7 +39,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-linear-to-br from-gray-900 via-purple-900 to-gray-900">
+    <section className="py-16 px-6 ">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -51,7 +51,7 @@ const Features = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500">
             Key Features
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto">
             Discover what makes PlateShare the best platform for food sharing
           </p>
         </motion.div>

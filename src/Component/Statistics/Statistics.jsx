@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-// src/Component/Statistics/Statistics.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUsers, FaUtensils, FaHeart, FaRecycle } from 'react-icons/fa';
@@ -13,7 +12,7 @@ const Statistics = () => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <section className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -22,10 +21,10 @@ const Statistics = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500">
             Our Impact
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className=" text-lg max-w-2xl mx-auto">
             Numbers that show our community's commitment to fighting hunger
           </p>
         </motion.div>
@@ -40,11 +39,11 @@ const Statistics = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className={`inline-block mb-4 text-transparent bg-clip-text bg-gradient-to-r ${stat.color}`}>
+              <div className={`inline-block mb-4 text-transparent bg-clip-text bg-linear-to-r ${stat.color}`}>
                 {stat.icon}
               </div>
               <motion.h3
-                className={`text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r ${stat.color}`}
+                className={`text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-linear-to-r ${stat.color}`}
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}

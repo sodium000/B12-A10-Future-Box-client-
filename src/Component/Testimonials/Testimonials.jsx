@@ -30,7 +30,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-gray-900">
+    <section className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -39,10 +39,10 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-pink-700">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-pink-700">
             What People Say
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className=" text-lg max-w-2xl mx-auto">
             Real stories from our community members
           </p>
         </motion.div>
